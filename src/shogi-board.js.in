@@ -1,2 +1,324 @@
 // vi: set ft=javascript :
-(function() { })();
+(function() {
+	var preset_piece_ryoko_torafu =
+{"FU":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Sfu.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Gfu.png"
+]
+,"GI":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Sgin.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Ggin.png"
+]
+,"HI":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Shi.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Ghi.png"
+]
+,"KA":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Skaku.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Gkaku.png"
+]
+,"KE":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Skei.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Gkei.png"
+]
+,"KI":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Skin.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Gkin.png"
+]
+,"KY":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Skyo.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Gkyo.png"
+]
+,"NG":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Sngin.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Gngin.png"
+]
+,"NK":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Snkei.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Gnkei.png"
+]
+,"NY":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Snkyo.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Gnkyo.png"
+]
+,"OU":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Sou.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Gou.png"
+]
+,"RY":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Sryu.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Gryu.png"
+]
+,"TO":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Sto.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Gto.png"
+]
+,"UM":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Suma.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko_torafu/Guma.png"
+]
+};
+var preset_piece_dirty =
+{"FU":
+[	"./mucho.girly.jp/bona/koma/koma_dirty/Sfu.png"
+,	"./mucho.girly.jp/bona/koma/koma_dirty/Gfu.png"
+]
+,"GI":
+[	"./mucho.girly.jp/bona/koma/koma_dirty/Sgin.png"
+,	"./mucho.girly.jp/bona/koma/koma_dirty/Ggin.png"
+]
+,"HI":
+[	"./mucho.girly.jp/bona/koma/koma_dirty/Shi.png"
+,	"./mucho.girly.jp/bona/koma/koma_dirty/Ghi.png"
+]
+,"KA":
+[	"./mucho.girly.jp/bona/koma/koma_dirty/Skaku.png"
+,	"./mucho.girly.jp/bona/koma/koma_dirty/Gkaku.png"
+]
+,"KE":
+[	"./mucho.girly.jp/bona/koma/koma_dirty/Skei.png"
+,	"./mucho.girly.jp/bona/koma/koma_dirty/Gkei.png"
+]
+,"KI":
+[	"./mucho.girly.jp/bona/koma/koma_dirty/Skin.png"
+,	"./mucho.girly.jp/bona/koma/koma_dirty/Gkin.png"
+]
+,"KY":
+[	"./mucho.girly.jp/bona/koma/koma_dirty/Skyo.png"
+,	"./mucho.girly.jp/bona/koma/koma_dirty/Gkyo.png"
+]
+,"NG":
+[	"./mucho.girly.jp/bona/koma/koma_dirty/Sngin.png"
+,	"./mucho.girly.jp/bona/koma/koma_dirty/Gngin.png"
+]
+,"NK":
+[	"./mucho.girly.jp/bona/koma/koma_dirty/Snkei.png"
+,	"./mucho.girly.jp/bona/koma/koma_dirty/Gnkei.png"
+]
+,"NY":
+[	"./mucho.girly.jp/bona/koma/koma_dirty/Snkyo.png"
+,	"./mucho.girly.jp/bona/koma/koma_dirty/Gnkyo.png"
+]
+,"OU":
+[	"./mucho.girly.jp/bona/koma/koma_dirty/Sou.png"
+,	"./mucho.girly.jp/bona/koma/koma_dirty/Gou.png"
+]
+,"RY":
+[	"./mucho.girly.jp/bona/koma/koma_dirty/Sryu.png"
+,	"./mucho.girly.jp/bona/koma/koma_dirty/Gryu.png"
+]
+,"TO":
+[	"./mucho.girly.jp/bona/koma/koma_dirty/Sto.png"
+,	"./mucho.girly.jp/bona/koma/koma_dirty/Gto.png"
+]
+,"UM":
+[	"./mucho.girly.jp/bona/koma/koma_dirty/Suma.png"
+,	"./mucho.girly.jp/bona/koma/koma_dirty/Guma.png"
+]
+};
+var preset_piece_kinki =
+{"FU":
+[	"./mucho.girly.jp/bona/koma/koma_kinki/Sfu.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki/Gfu.png"
+]
+,"GI":
+[	"./mucho.girly.jp/bona/koma/koma_kinki/Sgin.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki/Ggin.png"
+]
+,"HI":
+[	"./mucho.girly.jp/bona/koma/koma_kinki/Shi.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki/Ghi.png"
+]
+,"KA":
+[	"./mucho.girly.jp/bona/koma/koma_kinki/Skaku.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki/Gkaku.png"
+]
+,"KE":
+[	"./mucho.girly.jp/bona/koma/koma_kinki/Skei.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki/Gkei.png"
+]
+,"KI":
+[	"./mucho.girly.jp/bona/koma/koma_kinki/Skin.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki/Gkin.png"
+]
+,"KY":
+[	"./mucho.girly.jp/bona/koma/koma_kinki/Skyo.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki/Gkyo.png"
+]
+,"NG":
+[	"./mucho.girly.jp/bona/koma/koma_kinki/Sngin.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki/Gngin.png"
+]
+,"NK":
+[	"./mucho.girly.jp/bona/koma/koma_kinki/Snkei.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki/Gnkei.png"
+]
+,"NY":
+[	"./mucho.girly.jp/bona/koma/koma_kinki/Snkyo.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki/Gnkyo.png"
+]
+,"OU":
+[	"./mucho.girly.jp/bona/koma/koma_kinki/Sou.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki/Gou.png"
+]
+,"RY":
+[	"./mucho.girly.jp/bona/koma/koma_kinki/Sryu.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki/Gryu.png"
+]
+,"TO":
+[	"./mucho.girly.jp/bona/koma/koma_kinki/Sto.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki/Gto.png"
+]
+,"UM":
+[	"./mucho.girly.jp/bona/koma/koma_kinki/Suma.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki/Guma.png"
+]
+};
+var preset_piece_kinki_torafu =
+{"FU":
+[	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Sfu.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Gfu.png"
+]
+,"GI":
+[	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Sgin.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Ggin.png"
+]
+,"HI":
+[	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Shi.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Ghi.png"
+]
+,"KA":
+[	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Skaku.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Gkaku.png"
+]
+,"KE":
+[	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Skei.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Gkei.png"
+]
+,"KI":
+[	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Skin.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Gkin.png"
+]
+,"KY":
+[	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Skyo.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Gkyo.png"
+]
+,"NG":
+[	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Sngin.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Gngin.png"
+]
+,"NK":
+[	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Snkei.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Gnkei.png"
+]
+,"NY":
+[	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Snkyo.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Gnkyo.png"
+]
+,"OU":
+[	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Sou.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Gou.png"
+]
+,"RY":
+[	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Sryu.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Gryu.png"
+]
+,"TO":
+[	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Sto.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Gto.png"
+]
+,"UM":
+[	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Suma.png"
+,	"./mucho.girly.jp/bona/koma/koma_kinki_torafu/Guma.png"
+]
+};
+var preset_piece_ryoko =
+{"FU":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko/Sfu.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko/Gfu.png"
+]
+,"GI":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko/Sgin.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko/Ggin.png"
+]
+,"HI":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko/Shi.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko/Ghi.png"
+]
+,"KA":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko/Skaku.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko/Gkaku.png"
+]
+,"KE":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko/Skei.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko/Gkei.png"
+]
+,"KI":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko/Skin.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko/Gkin.png"
+]
+,"KY":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko/Skyo.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko/Gkyo.png"
+]
+,"NG":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko/Sngin.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko/Gngin.png"
+]
+,"NK":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko/Snkei.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko/Gnkei.png"
+]
+,"NY":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko/Snkyo.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko/Gnkyo.png"
+]
+,"OU":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko/Sou.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko/Gou.png"
+]
+,"RY":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko/Sryu.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko/Gryu.png"
+]
+,"TO":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko/Sto.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko/Gto.png"
+]
+,"UM":
+[	"./mucho.girly.jp/bona/koma/koma_ryoko/Suma.png"
+,	"./mucho.girly.jp/bona/koma/koma_ryoko/Guma.png"
+]
+};
+
+// "./mucho.girly.jp/bona/masu/masu_nodot.png"
+// "./mucho.girly.jp/bona/masu/masu_dot_xy.png"
+// "./mucho.girly.jp/bona/masu/masu_nodot_xy.png"
+// "./mucho.girly.jp/bona/masu/masu_handwriting.png"
+// "./mucho.girly.jp/bona/masu/masu_dot.png"
+// "./mucho.girly.jp/bona/focus/focus_thin_y.png"
+// "./mucho.girly.jp/bona/focus/focus_trpt_g.png"
+// "./mucho.girly.jp/bona/focus/focus_thin_r.png"
+// "./mucho.girly.jp/bona/focus/focus_thin_g.png"
+// "./mucho.girly.jp/bona/focus/focus_trpt_r.png"
+// "./mucho.girly.jp/bona/focus/focus_bold_b.png"
+// "./mucho.girly.jp/bona/focus/focus_trpt_b.png"
+// "./mucho.girly.jp/bona/focus/focus_trpt_y.png"
+// "./mucho.girly.jp/bona/focus/focus_handwriting.png"
+// "./mucho.girly.jp/bona/focus/focus_bold_o.png"
+// "./mucho.girly.jp/bona/focus/focus_bold_r.png"
+// "./mucho.girly.jp/bona/focus/focus_bold_y.png"
+// "./mucho.girly.jp/bona/focus/focus_thin_b.png"
+// "./mucho.girly.jp/bona/focus/focus_bold_g.png"
+// "./mucho.girly.jp/bona/ban/ban_paper.png"
+// "./mucho.girly.jp/bona/ban/ban_dirty.png"
+// "./mucho.girly.jp/bona/ban/ban_stripe.png"
+// "./mucho.girly.jp/bona/ban/ban_kaya_c.png"
+// "./mucho.girly.jp/bona/ban/ban_gohan.png"
+// "./mucho.girly.jp/bona/ban/ban_paper_y.png"
+// "./mucho.girly.jp/bona/ban/ban_kaya_d.png"
+// "./mucho.girly.jp/bona/ban/ban_kaya_a.png"
+// "./mucho.girly.jp/bona/ban/ban_muji.png"
+// "./mucho.girly.jp/bona/ban/ban_oritatami.png"
+// "./mucho.girly.jp/bona/ban/ban_kaya_b.png"
+})();
