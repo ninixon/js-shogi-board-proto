@@ -32,11 +32,9 @@
 			var sel = d3.select("#theboard");
 			sel
 				.selectAll("tr").data(bd)
-					.enter()
-						.append("tr")
-				.selectAll("td").data(bd)
-					.enter()
-						.append("td")
+				.enter().append("tr")
+				.selectAll("td").data(function(d) { return d3.entries(d) })
+				.enter().append("td")
 			;
 		</script>
 	</body>
