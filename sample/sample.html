@@ -3,7 +3,41 @@
 	<head>
 		<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script src="../dist/shogi-board.js" charset="utf-8"></script>
+		<style>
+			table.theboard {
+				border-collapse: collapse;
+			}
+			table.theboard tr,
+			table.theboard tr td {
+				border: solid black 1px;
+			}
+		</style>
 	</head>
 	<body>
+		<table id=theboard class=theboard>
+		</table>
+
+		<script>
+			var bd =
+			[[["KY",1],["KE",1],["GI",1],["KI",1],["OU",1],["KI",1],["GI",1],["KE",1],["KY",1]]
+			,[[ null ],["HI",1],[ null ],[ null ],[ null ],[ null ],[ null ],["KA",1],[ null ]]
+			,[["FU",1],["FU",1],["FU",1],["FU",1],["FU",1],["FU",1],["FU",1],["FU",1],["FU",1]]
+			,[[ null ],[ null ],[ null ],[ null ],[ null ],[ null ],[ null ],[ null ],[ null ]]
+			,[[ null ],[ null ],[ null ],[ null ],[ null ],[ null ],[ null ],[ null ],[ null ]]
+			,[[ null ],[ null ],[ null ],[ null ],[ null ],[ null ],[ null ],[ null ],[ null ]]
+			,[["FU",0],["FU",0],["FU",0],["FU",0],["FU",0],["FU",0],["FU",0],["FU",0],["FU",0]]
+			,[[ null ],["KA",0],[ null ],[ null ],[ null ],[ null ],[ null ],["HI",0],[ null ]]
+			,[["KY",0],["KE",0],["GI",0],["KI",0],["OU",0],["KI",0],["GI",0],["KE",0],["KY",0]]
+			];
+			var sel = d3.select("#theboard");
+			sel
+				.selectAll("tr").data(bd)
+					.enter()
+						.append("tr")
+				.selectAll("td").data(bd)
+					.enter()
+						.append("td")
+			;
+		</script>
 	</body>
 </html>
