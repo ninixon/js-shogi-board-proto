@@ -20,13 +20,13 @@
 		<script>
 			var bd =
 			[[["KY",1],["KE",1],["GI",1],["KI",1],["OU",1],["KI",1],["GI",1],["KE",1],["KY",1]]
-			,[[ null ],["HI",1],[ null ],[ null ],[ null ],[ null ],[ null ],["KA",1],[ null ]]
+			,[  null  ,["HI",1],  null  ,  null  ,  null  ,  null  ,  null  ,["KA",1],  null  ]
 			,[["FU",1],["FU",1],["FU",1],["FU",1],["FU",1],["FU",1],["FU",1],["FU",1],["FU",1]]
-			,[[ null ],[ null ],[ null ],[ null ],[ null ],[ null ],[ null ],[ null ],[ null ]]
-			,[[ null ],[ null ],[ null ],[ null ],[ null ],[ null ],[ null ],[ null ],[ null ]]
-			,[[ null ],[ null ],[ null ],[ null ],[ null ],[ null ],[ null ],[ null ],[ null ]]
+			,[  null  ,  null  ,  null  ,  null  ,  null  ,  null  ,  null  ,  null  ,  null  ]
+			,[  null  ,  null  ,  null  ,  null  ,  null  ,  null  ,  null  ,  null  ,  null  ]
+			,[  null  ,  null  ,  null  ,  null  ,  null  ,  null  ,  null  ,  null  ,  null  ]
 			,[["FU",0],["FU",0],["FU",0],["FU",0],["FU",0],["FU",0],["FU",0],["FU",0],["FU",0]]
-			,[[ null ],["KA",0],[ null ],[ null ],[ null ],[ null ],[ null ],["HI",0],[ null ]]
+			,[  null  ,["KA",0],  null  ,  null  ,  null  ,  null  ,  null  ,["HI",0],  null  ]
 			,[["KY",0],["KE",0],["GI",0],["KI",0],["OU",0],["KI",0],["GI",0],["KE",0],["KY",0]]
 			];
 			var sel = d3.select("#theboard");
@@ -35,6 +35,7 @@
 				.enter().append("tr")
 				.selectAll("td").data(function(d) { return d3.entries(d) })
 				.enter().append("td")
+				.each(function(d) { console.log(d); if(d['value']) {d3.select(this).text(d['value'][0])} else {d3.select(this).text('null')} })
 			;
 		</script>
 	</body>
