@@ -1,4 +1,5 @@
 // vi: set ft=javascript :
+var ShogiBoard;
 (function() {
 	var preset_piece_ryoko_torafu =
 {"FU":
@@ -357,4 +358,10 @@ var preset_piece_ryoko =
 // "./mucho.girly.jp/bona/ban/ban_muji.png"
 // "./mucho.girly.jp/bona/ban/ban_oritatami.png"
 // "./mucho.girly.jp/bona/ban/ban_kaya_b.png"
+
+	var ret = {};
+	ShogiBoard = ret;
+	ret.preset = {};
+	ret.preset.piece = {};
+	ret.preset.piece.ryoko_torafu = preset_piece_ryoko_torafu;
 })();

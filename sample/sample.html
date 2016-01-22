@@ -35,7 +35,23 @@
 				.enter().append("tr")
 				.selectAll("td").data(function(d) { return d3.entries(d) })
 				.enter().append("td")
-				.each(function(d) { console.log(d); if(d['value']) {d3.select(this).text(d['value'][0])} else {d3.select(this).text('null')} })
+				.each(function(d) {
+					var value = d['value'];
+					var src;
+					if(value) {
+						src = "../../" + ShogiBoard.preset.piece.ryoko_torafu[value[0]][value[1]];
+					} else {
+						src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAAwCAYAAACITIOYAAAAH0lEQVRo3u3BMQEAAADCoPVPbQZ/oAAAAAAAAAAAPgMgcAAB3kcvEQAAAABJRU5ErkJggg==";
+					}
+					var img = this.firstChild;
+					if (img) {
+						img.src = src;
+					} else {
+						img = document.createElement("img");
+						img.src = src;
+						this.appendChild(img);
+					}
+				})
 			;
 		</script>
 	</body>
