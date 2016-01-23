@@ -4,13 +4,6 @@
 		<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script src="../dist/shogi-board.js" charset="utf-8"></script>
 		<style>
-			table.theboard {
-				border-collapse: collapse;
-			}
-			table.theboard tr,
-			table.theboard tr td {
-				border: solid black 1px;
-			}
 		</style>
 	</head>
 	<body>
@@ -30,11 +23,15 @@
 			,[["KY",0],["KE",0],["GI",0],["KI",0],["OU",0],["KI",0],["GI",0],["KE",0],["KY",0]]
 			];
 			var sel = d3.select("#theboard");
+			sel.node().style.padding="11px 11px 10px"; // does not work
+			sel.node().style.borderCollapse="collapse";
+			sel.node().style.backgroundImage = "url(" + "../../" + ShogiBoard.preset.grid.dot_xy + ")";
 			sel
 				.selectAll("tr").data(bd)
 				.enter().append("tr")
 				.selectAll("td").data(function(d) { return d3.entries(d) })
 				.enter().append("td")
+				.attr("style", "margin: 0; padding: 0")
 				.each(function(d) {
 					var value = d['value'];
 					var src;

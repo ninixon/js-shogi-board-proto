@@ -328,11 +328,6 @@ var preset_piece_ryoko =
 
  */
 
-// "./mucho.girly.jp/bona/masu/masu_nodot.png"
-// "./mucho.girly.jp/bona/masu/masu_dot_xy.png"
-// "./mucho.girly.jp/bona/masu/masu_nodot_xy.png"
-// "./mucho.girly.jp/bona/masu/masu_handwriting.png"
-// "./mucho.girly.jp/bona/masu/masu_dot.png"
 // "./mucho.girly.jp/bona/focus/focus_thin_y.png"
 // "./mucho.girly.jp/bona/focus/focus_trpt_g.png"
 // "./mucho.girly.jp/bona/focus/focus_thin_r.png"
@@ -364,4 +359,11 @@ var preset_piece_ryoko =
 	ret.preset = {};
 	ret.preset.piece = {};
 	ret.preset.piece.ryoko_torafu = preset_piece_ryoko_torafu;
+
+	ret.preset.grid = {};
+	ret.preset.grid.dot = "./mucho.girly.jp/bona/masu/masu_dot.png";
+	ret.preset.grid.nodot = "./mucho.girly.jp/bona/masu/masu_nodot.png";
+	ret.preset.grid.dot_xy = "./mucho.girly.jp/bona/masu/masu_dot_xy.png";
+	ret.preset.grid.nodot_xy = "./mucho.girly.jp/bona/masu/masu_nodot_xy.png";
+	ret.preset.grid.handwriting = "./mucho.girly.jp/bona/masu/masu_handwriting.png";
 })();
