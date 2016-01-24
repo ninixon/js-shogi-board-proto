@@ -75,12 +75,32 @@
 };
 			var dhandler = function(d) {
 				var value = d['value'];
-				var text = value ? textmap[value[0]] : ' ';
 				var div = document.createElement('div');
-				div.appendChild(document.createTextNode(text));
 				var style = "font-size: 1.5em;";
+				var transform = [];
 				if (value && value[1] == 1) {
-					style = style + "transform: rotate(180deg)";
+					transform.push("rotate(180deg)");
+				}
+				if (value) {
+					var chs = textmap[value[0]].split('');
+					var firstchar = true;
+					for (var i = 0; i < chs.length; ++i) {
+						if (firstchar) {
+							firstchar = false;
+						} else {
+							div.appendChild(document.createElement('br'));
+						}
+						var c = chs[i];
+						div.appendChild(document.createTextNode(c));
+					}
+					if (chs.length > 1) {
+						transform.push("scaleY(0.5)");
+					}
+					if (transform.length > 0) {
+						style += "transform: " + transform.join(' ') + ';'
+					}
+				} else {
+					div.appendChild(document.createTextNode(' '));
 				}
 				div.style = style;
 				this.appendChild(div);
