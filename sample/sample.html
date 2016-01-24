@@ -7,7 +7,7 @@
 		</style>
 	</head>
 	<body>
-		<table id=theboard class=theboard>
+		<table id=theboard >
 		</table>
 
 		<script>
@@ -22,6 +22,9 @@
 			,[  null  ,["KA",0],  null  ,  null  ,  null  ,  null  ,  null  ,["HI",0],  null  ]
 			,[["KY",0],["KE",0],["GI",0],["KI",0],["OU",0],["KI",0],["GI",0],["KE",0],["KY",0]]
 			];
+		</script>
+
+		<script>(function() {
 			var sel = d3.select("#theboard");
 			sel.node().style.padding="11px 11px 10px"; // does not work
 			sel.node().style.borderCollapse="collapse";
@@ -50,6 +53,6 @@
 					}
 				})
 			;
-		</script>
+		})();</script>
 	</body>
 </html>
