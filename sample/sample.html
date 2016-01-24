@@ -78,9 +78,11 @@
 				var text = value ? textmap[value[0]] : ' ';
 				var div = document.createElement('div');
 				div.appendChild(document.createTextNode(text));
+				var style = "font-size: 1.5em;";
 				if (value && value[1] == 1) {
-					div.style = "transform: rotate(180deg)";
+					style = style + "transform: rotate(180deg)";
 				}
+				div.style = style;
 				this.appendChild(div);
 			};
 			var sel = d3.select("#theboard2");
