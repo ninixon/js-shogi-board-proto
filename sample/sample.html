@@ -34,7 +34,7 @@
 			sel
 				.selectAll("tr").data(bd)
 				.enter().append("tr")
-				.selectAll("td").data(function(d) { return d3.entries(d) })
+				.selectAll("td").data(d3.entries)
 				.enter().append("td")
 				.attr("style", "margin: 0; padding: 0")
 				.each(function(d) {
@@ -57,14 +57,41 @@
 			;
 		})();</script>
 		<script>(function() {
+			var textmap =
+{"FU":"歩"
+,"GI":"銀"
+,"HI":"飛"
+,"KA":"角"
+,"KE":"桂"
+,"KI":"金"
+,"KY":"香"
+,"NG":"成銀"
+,"NK":"成香"
+,"NY":"成桂"
+,"OU":"玉"
+,"RY":"龍"
+,"TO":"と"
+,"UM":"馬"
+};
+			var dhandler = function(d) {
+				var value = d['value'];
+				var text = value ? textmap[value[0]] : ' ';
+				var div = document.createElement('div');
+				div.appendChild(document.createTextNode(text));
+				if (value && value[1] == 1) {
+					div.style = "transform: rotate(180deg)";
+				}
+				this.appendChild(div);
+			};
 			var sel = d3.select("#theboard2");
 			sel.node().style.borderCollapse="collapse";
 			sel
 				.selectAll("tr").data(bd)
 				.enter().append("tr")
-				.selectAll("td").data(function(d) { return d3.entries(d) })
+				.selectAll("td").data(d3.entries)
 				.enter().append("td")
-				.attr("style", "margin: 0; padding: 0; border: solid black 1px")
+				.attr("style", "margin: 0; padding: 0; border: solid black 1px; width: 2em; height: 2.5em; text-align: center;")
+				.each(dhandler)
 				;
 		})();</script>
 	</body>
