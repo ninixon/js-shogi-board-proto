@@ -56,5 +56,16 @@
 				})
 			;
 		})();</script>
+		<script>(function() {
+			var sel = d3.select("#theboard2");
+			sel.node().style.borderCollapse="collapse";
+			sel
+				.selectAll("tr").data(bd)
+				.enter().append("tr")
+				.selectAll("td").data(function(d) { return d3.entries(d) })
+				.enter().append("td")
+				.attr("style", "margin: 0; padding: 0; border: solid black 1px")
+				;
+		})();</script>
 	</body>
 </html>
