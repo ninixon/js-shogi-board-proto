@@ -15,8 +15,8 @@
 		<script>
 			var bd =
 			[[["NK",1],["NY",1],["NG",1],["KI",1],["OU",1],["KI",1],["GI",1],["KE",1],["KY",1]]
-			,[  null  ,["RY",1],  null  ,  null  ,  null  ,  null  ,  null  ,["KA",1],  null  ]
-			,[["FU",1],["FU",1],["FU",1],["FU",1],["FU",1],["FU",1],["FU",1],["FU",1],["FU",1]]
+			,[  null  ,["RY",1],  null  ,  null  ,  null  ,  null  ,  null  ,["UM",1],  null  ]
+			,[["FU",1],["FU",1],["FU",1],["TO",1],["TO",1],["TO",1],["FU",1],["FU",1],["FU",1]]
 			,[  null  ,  null  ,  null  ,  null  ,  null  ,  null  ,  null  ,  null  ,  null  ]
 			,[  null  ,  null  ,  null  ,  null  ,  null  ,  null  ,  null  ,  null  ,  null  ]
 			,[  null  ,  null  ,  null  ,  null  ,  null  ,  null  ,  null  ,  null  ,  null  ]
@@ -96,11 +96,11 @@
 					if (chs.length > 1) {
 						transform.push("scaleY(0.5)");
 					}
-					if (transform.length > 0) {
-						style += "transform: " + transform.join(' ') + ';'
-					}
 				} else {
 					div.appendChild(document.createTextNode(' '));
+				}
+				if (transform.length > 0) {
+					style += "transform: " + transform.join(' ') + ';'
 				}
 				div.style = style;
 				this.appendChild(div);
@@ -112,7 +112,7 @@
 				.enter().append("tr")
 				.selectAll("td").data(d3.entries)
 				.enter().append("td")
-				.attr("style", "margin: 0; padding: 0; border: solid black 1px; width: 2em; height: 2.5em; text-align: center;")
+				.attr("style", "margin: 0; padding: 0; border: solid black 1px; width: 2em; height: 2.5em; text-align: center; overflow: hidden;")
 				.each(dhandler)
 				;
 		})();</script>
