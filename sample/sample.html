@@ -107,10 +107,18 @@
 							div.appendChild(document.createElement('br'));
 						}
 						var c = chs[i];
-						div.appendChild(document.createTextNode(c));
+						var span = document.createElement('span');
+						var span_style = "display: inline-block;width:1em;";
+						if (chs.length > 1) {
+							span_style += "transform:scaleY(0.5);";
+						}
+						span.style = span_style;
+						span.appendChild(document.createTextNode(c));
+						div.appendChild(span);
 					}
 					if (chs.length > 1) {
-						transform.push("scaleY(0.5)");
+						// transform.push("scaleY(0.5)");
+						style += "line-height: 0.5;";
 					}
 
 					var color = colormap[value[0]];
