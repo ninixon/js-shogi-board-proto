@@ -58,21 +58,37 @@
 		})();</script>
 		<script>(function() {
 			var textmap =
-{"FU":"歩"
-,"GI":"銀"
-,"HI":"飛"
-,"KA":"角"
-,"KE":"桂"
-,"KI":"金"
-,"KY":"香"
-,"NG":"成銀"
-,"NK":"成香"
-,"NY":"成桂"
-,"OU":"玉"
-,"RY":"龍"
-,"TO":"と"
-,"UM":"馬"
-};
+			{"FU":"歩"
+			,"GI":"銀"
+			,"HI":"飛"
+			,"KA":"角"
+			,"KE":"桂"
+			,"KI":"金"
+			,"KY":"香"
+			,"NG":"成銀"
+			,"NK":"成香"
+			,"NY":"成桂"
+			,"OU":"玉"
+			,"RY":"龍"
+			,"TO":"と"
+			,"UM":"馬"
+			};
+			var colormap =
+			{"FU":"black"
+			,"GI":"black"
+			,"HI":"black"
+			,"KA":"black"
+			,"KE":"black"
+			,"KI":"black"
+			,"KY":"black"
+			,"NG":"red"
+			,"NK":"red"
+			,"NY":"red"
+			,"OU":"玉"
+			,"RY":"red"
+			,"TO":"red"
+			,"UM":"red"
+			};
 			var dhandler = function(d) {
 				var value = d['value'];
 				var div = document.createElement('div');
@@ -96,6 +112,9 @@
 					if (chs.length > 1) {
 						transform.push("scaleY(0.5)");
 					}
+
+					var color = colormap[value[0]];
+					style += "color:" + color + ";";
 				} else {
 					div.appendChild(document.createTextNode(' '));
 				}
