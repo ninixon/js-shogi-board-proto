@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+		<meta charset=utf-8>
 		<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script src="../dist/shogi-board.js" charset="utf-8"></script>
 		<style>
@@ -56,7 +57,7 @@
 				})
 			;
 		})();</script>
-		<script>(function() {
+		<script>
 			var textmap =
 			{"FU":"歩"
 			,"GI":"銀"
@@ -84,15 +85,17 @@
 			,"NG":"red"
 			,"NK":"red"
 			,"NY":"red"
-			,"OU":"玉"
+			,"OU":"black"
 			,"RY":"red"
 			,"TO":"red"
 			,"UM":"red"
 			};
+		</script>
+		<script>(function() {
 			var dhandler = function(d) {
 				var value = d['value'];
 				var div = document.createElement('div');
-				var style = "font-size: 1.5em;";
+				var style = "font-size: 1.8em;";
 				var transform = [];
 				if (value && value[1] == 1) {
 					transform.push("rotate(180deg)");
