@@ -12,6 +12,8 @@
 		</table>
 		<table id=theboard2>
 		</table>
+		<div id=theboard3>
+		</div>
 
 		<script>
 			var bd =
@@ -146,5 +148,12 @@
 				.each(dhandler)
 				;
 		})();</script>
+		<script>(function() {
+			var sel = d3.select("#theboard3");
+			var svg = sel.append("svg")
+			  .attr("width", 400)
+			  .attr("height", 400)
+			  ;
+		})()</script>
 	</body>
 </html>
