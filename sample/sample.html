@@ -149,10 +149,36 @@
 				;
 		})();</script>
 		<script>(function() {
+			var svgWidth = 310;
+			var svgHeight = 340;
+			var boardWidth = 300;
+			var boardHeight = 330;
 			var sel = d3.select("#theboard3");
 			var svg = sel.append("svg")
-			  .attr("width", 400)
-			  .attr("height", 400)
+			  .attr("width", svgWidth)
+			  .attr("height", svgHeight)
+			  ;
+			var scaleX = d3.scale.linear().domain([0, 9]).range([5, boardWidth + 5]);
+			var scaleY = d3.scale.linear().domain([0, 9]).range([5, boardHeight + 5]);
+			svg.selectAll("line.gridX")
+			  .data(d3.range(0, 9+1, 1))
+			  .enter().append("line")
+			  .attr("class", "gridX")
+			  .attr("x1", function(d) { return scaleX(d) })
+			  .attr("y1", scaleY(0))
+			  .attr("x2", function(d) { return scaleX(d) })
+			  .attr("y2", scaleY(9))
+			  .attr("stroke", "black")
+			  ;
+			svg.selectAll("line.gridY")
+			  .data(d3.range(0, 9+1, 1))
+			  .enter().append("line")
+			  .attr("class", "gridY")
+			  .attr("x1", scaleX(0))
+			  .attr("y1", function(d) { return scaleY(d) })
+			  .attr("x2", scaleX(9))
+			  .attr("y2", function(d) { return scaleY(d) })
+			  .attr("stroke", "black")
 			  ;
 		})()</script>
 	</body>
