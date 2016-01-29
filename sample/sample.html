@@ -173,8 +173,8 @@
 			];
 		</script>
 		<script>(function() {
-			var svgWidth = 310;
-			var svgHeight = 340;
+			var svgWidth = 330;
+			var svgHeight = 360;
 			var boardWidth = 300;
 			var boardHeight = 330;
 			var sel = d3.select("#theboard3");
@@ -182,8 +182,8 @@
 			  .attr("width", svgWidth)
 			  .attr("height", svgHeight)
 			  ;
-			var scaleX = d3.scale.linear().domain([0, 9]).range([5, boardWidth + 5]);
-			var scaleY = d3.scale.linear().domain([0, 9]).range([5, boardHeight + 5]);
+			var scaleX = d3.scale.linear().domain([9, 0]).range([15, boardWidth + 15]);
+			var scaleY = d3.scale.linear().domain([0, 9]).range([20, boardHeight + 20]);
 			svg.selectAll("line.gridX")
 			  .data(d3.range(0, 9+1, 1))
 			  .enter().append("line")
@@ -213,6 +213,26 @@
 			  .attr("r", "3")
 			  .attr("stroke", "black")
 			  .attr("fill", "black")
+			  ;
+			svg.selectAll("text.gaugeX")
+			  .data(['１','２','３','４','５','６','７','８','９'])
+			  .enter().append("text")
+			  .attr("font-size",10)
+			  .attr("text-anchor","middle")
+			  .attr("dominant-baseline","middle")
+			  .attr("x",function(d, i) { return scaleX(i + 0.5); })
+			  .attr("y",scaleY(-0.2))
+			  .text(function(d) { return d })
+			  ;
+			svg.selectAll("text.gaugeY")
+			  .data(['一','二','三','四','五','六','七','八','九'])
+			  .enter().append("text")
+			  .attr("font-size",10)
+			  .attr("text-anchor","middle")
+			  .attr("dominant-baseline","middle")
+			  .attr("x",scaleX(-0.2))
+			  .attr("y",function(d, i) { return scaleY(i + 0.5); })
+			  .text(function(d) { return d })
 			  ;
 		})()</script>
 	</body>
