@@ -216,7 +216,7 @@
 			  ;
 			svg.selectAll("text.gaugeX")
 			  .data(['１','２','３','４','５','６','７','８','９'])
-			  .enter().append("text")
+			  .enter().append("text").attr("class","gaugeX")
 			  .attr("font-size",10)
 			  .attr("text-anchor","middle")
 			  .attr("dominant-baseline","middle")
@@ -226,13 +226,33 @@
 			  ;
 			svg.selectAll("text.gaugeY")
 			  .data(['一','二','三','四','五','六','七','八','九'])
-			  .enter().append("text")
+			  .enter().append("text").attr("class","gaugeY")
 			  .attr("font-size",10)
 			  .attr("text-anchor","middle")
 			  .attr("dominant-baseline","middle")
 			  .attr("x",scaleX(-0.2))
 			  .attr("y",function(d, i) { return scaleY(i + 0.5); })
 			  .text(function(d) { return d })
+			  ;
+			svg.selectAll("text.pcs0")
+			  .data(pcs0)
+			  .enter().append("text").attr("class","pcs0")
+			  .attr("font-size",30)
+			  .attr("text-anchor","middle")
+			  .attr("dominant-baseline","text-after-edge")
+			  .attr("x", function(d) { return scaleX(d[1] - 0.5); } )
+			  .attr("y", function(d) { return scaleY(d[2]); } )
+			  .text(function(d) { return textmap[d[0]]; } )
+			  ;
+			svg.selectAll("text.pcs1")
+			  .data(pcs1)
+			  .enter().append("text").attr("class","pcs0")
+			  .attr("font-size",30)
+			  .attr("text-anchor","middle")
+			  .attr("dominant-baseline","text-after-edge")
+			  .attr("x", function(d) { return scaleX(d[1] - 0.5); } )
+			  .attr("y", function(d) { return scaleY(d[2]); } )
+			  .text(function(d) { return textmap[d[0]]; } )
 			  ;
 		})()</script>
 	</body>
