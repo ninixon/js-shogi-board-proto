@@ -150,27 +150,28 @@
 		})();</script>
 		<script>
 			var pcs0 =
-			[ ["TO","9","7"] , ["TO","8","7"] , ["TO","7","7"]
-			, ["FU","6","7"] , ["FU","5","7"] , ["FU","4","7"]
-			, ["FU","3","7"] , ["FU","2","7"] , ["FU","1","7"]
-			, ["UM","8","8"] , ["HI","2","8"]
-			, ["NK","9","9"] , ["KY","1","9"]
-			, ["NY","8","9"] , ["KE","2","9"]
-			, ["NG","7","9"] , ["GI","3","9"]
-			, ["KI","6","9"] , ["KI","4","9"]
-			, ["OU","5","9"]
+			[ ["TO",9,7] , ["TO",8,7] , ["TO",7,7]
+			, ["FU",6,7] , ["FU",5,7] , ["FU",4,7]
+			, ["FU",3,7] , ["FU",2,7] , ["FU",1,7]
+			, ["UM",8,8] , ["HI",2,8]
+			, ["NK",9,9] , ["KY",1,9]
+			, ["NY",8,9] , ["KE",2,9]
+			, ["NG",7,5] , ["GI",3,9]
+			, ["KI",6,9] , ["KI",4,9]
+			, ["OU",5,9]
 			];
 			var pcs1 =
-			[ ["TO","1","3"] , ["TO","2","3"] , ["TO","3","3"]
-			, ["FU","4","3"] , ["FU","5","3"] , ["FU","6","3"]
-			, ["FU","7","3"] , ["FU","8","3"] , ["FU","9","3"]
-			, ["KA","2","2"] , ["RY","8","2"]
-			, ["NK","1","1"] , ["KY","9","1"]
-			, ["NY","2","1"] , ["KE","8","1"]
-			, ["NG","3","1"] , ["GI","7","1"]
-			, ["KI","4","1"] , ["KI","6","1"]
-			, ["OU","5","1"]
+			[ ["TO",1,3] , ["TO",2,3] , ["TO",3,3]
+			, ["FU",4,3] , ["FU",5,3] , ["FU",6,3]
+			, ["FU",7,3] , ["FU",8,3] , ["FU",9,3]
+			, ["KA",2,2] , ["RY",8,2]
+			, ["NK",1,1] , ["KY",9,1]
+			, ["NY",2,4] , ["KE",8,1]
+			, ["NG",3,1] , ["GI",7,1]
+			, ["KI",4,1] , ["KI",6,1]
+			, ["OU",5,1]
 			];
+			var hilite = [ 7, 5 ];
 		</script>
 		<script>(function() {
 			var svgWidth = 330;
@@ -184,6 +185,13 @@
 			  ;
 			var scaleX = d3.scale.linear().domain([9, 0]).range([15, boardWidth + 15]);
 			var scaleY = d3.scale.linear().domain([0, 9]).range([20, boardHeight + 20]);
+			svg.append("rect")
+			  .attr("x", Math.min(scaleX(hilite[0]), scaleX(hilite[0] - 1)))
+			  .attr("y", Math.min(scaleY(hilite[1]), scaleY(hilite[1] - 1)))
+			  .attr("width", Math.abs(scaleX(hilite[0]) - scaleX(hilite[0] - 1)))
+			  .attr("height", Math.abs(scaleY(hilite[1]) - scaleY(hilite[1] - 1)))
+			  .attr("fill", "#CCFFAA")
+			  ;
 			svg.selectAll("line.gridX")
 			  .data(d3.range(0, 9+1, 1))
 			  .enter().append("line")
