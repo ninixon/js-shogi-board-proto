@@ -242,6 +242,7 @@
 			  .attr("dominant-baseline","text-after-edge")
 			  .attr("x", function(d) { return scaleX(d[1] - 0.5); } )
 			  .attr("y", function(d) { return scaleY(d[2]); } )
+			  .attr("stroke", function(d) { return colormap[d[0]]; })
 			  .text(function(d) { return textmap[d[0]]; } )
 			  ;
 			svg.selectAll("text.pcs1")
@@ -252,6 +253,8 @@
 			  .attr("dominant-baseline","text-after-edge")
 			  .attr("x", function(d) { return scaleX(d[1] - 0.5); } )
 			  .attr("y", function(d) { return scaleY(d[2]); } )
+			  .attr("transform", function(d) { return "rotate(180 " + scaleX(d[1] - 0.5) + " " + scaleY(d[2] - 0.5) + ")" })
+			  .attr("stroke", function(d) { return colormap[d[0]]; })
 			  .text(function(d) { return textmap[d[0]]; } )
 			  ;
 		})()</script>
