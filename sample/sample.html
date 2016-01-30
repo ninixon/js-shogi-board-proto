@@ -174,7 +174,7 @@
 			var hilite = [ 7, 5 ];
 		</script>
 		<script>(function() {
-			var svgWidth = 330;
+			var svgWidth = 420;
 			var svgHeight = 360;
 			var boardWidth = 300;
 			var boardHeight = 330;
@@ -183,7 +183,7 @@
 			  .attr("width", svgWidth)
 			  .attr("height", svgHeight)
 			  ;
-			var scaleX = d3.scale.linear().domain([9, 0]).range([15, boardWidth + 15]);
+			var scaleX = d3.scale.linear().domain([9, 0]).range([45, boardWidth + 45]);
 			var scaleY = d3.scale.linear().domain([0, 9]).range([20, boardHeight + 20]);
 			svg.append("rect")
 			  .attr("x", Math.min(scaleX(hilite[0]), scaleX(hilite[0] - 1)))
