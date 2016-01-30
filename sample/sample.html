@@ -183,41 +183,41 @@
 			  .attr("width", svgWidth)
 			  .attr("height", svgHeight)
 			  ;
-			var scaleX = d3.scale.linear().domain([9, 0]).range([45, boardWidth + 45]);
-			var scaleY = d3.scale.linear().domain([0, 9]).range([20, boardHeight + 20]);
+			var scX = d3.scale.linear().domain([9, 0]).range([45, boardWidth + 45]);
+			var scY = d3.scale.linear().domain([0, 9]).range([20, boardHeight + 20]);
 			svg.append("rect")
-			  .attr("x", Math.min(scaleX(hilite[0]), scaleX(hilite[0] - 1)))
-			  .attr("y", Math.min(scaleY(hilite[1]), scaleY(hilite[1] - 1)))
-			  .attr("width", Math.abs(scaleX(hilite[0]) - scaleX(hilite[0] - 1)))
-			  .attr("height", Math.abs(scaleY(hilite[1]) - scaleY(hilite[1] - 1)))
+			  .attr("x", Math.min(scX(hilite[0]), scX(hilite[0] - 1)))
+			  .attr("y", Math.min(scY(hilite[1]), scY(hilite[1] - 1)))
+			  .attr("width", Math.abs(scX(hilite[0]) - scX(hilite[0] - 1)))
+			  .attr("height", Math.abs(scY(hilite[1]) - scY(hilite[1] - 1)))
 			  .attr("fill", "#CCFFAA")
 			  ;
 			svg.selectAll("line.gridX")
 			  .data(d3.range(0, 9+1, 1))
 			  .enter().append("line")
 			  .attr("class", "gridX")
-			  .attr("x1", function(d) { return scaleX(d) })
-			  .attr("y1", scaleY(0))
-			  .attr("x2", function(d) { return scaleX(d) })
-			  .attr("y2", scaleY(9))
+			  .attr("x1", function(d) { return scX(d) })
+			  .attr("y1", scY(0))
+			  .attr("x2", function(d) { return scX(d) })
+			  .attr("y2", scY(9))
 			  .attr("stroke", "black")
 			  ;
 			svg.selectAll("line.gridY")
 			  .data(d3.range(0, 9+1, 1))
 			  .enter().append("line")
 			  .attr("class", "gridY")
-			  .attr("x1", scaleX(0))
-			  .attr("y1", function(d) { return scaleY(d) })
-			  .attr("x2", scaleX(9))
-			  .attr("y2", function(d) { return scaleY(d) })
+			  .attr("x1", scX(0))
+			  .attr("y1", function(d) { return scY(d) })
+			  .attr("x2", scX(9))
+			  .attr("y2", function(d) { return scY(d) })
 			  .attr("stroke", "black")
 			  ;
 			svg.selectAll("circle.star")
 			  .data([[3, 3], [3, 6], [6, 3], [6, 6]])
 			  .enter().append("circle")
 			  .attr("class", "star")
-			  .attr("cx", function(d) { return scaleX(d[0]) })
-			  .attr("cy", function(d) { return scaleY(d[1]) })
+			  .attr("cx", function(d) { return scX(d[0]) })
+			  .attr("cy", function(d) { return scY(d[1]) })
 			  .attr("r", "3")
 			  .attr("stroke", "black")
 			  .attr("fill", "black")
@@ -228,8 +228,8 @@
 			  .attr("font-size",10)
 			  .attr("text-anchor","middle")
 			  .attr("dominant-baseline","middle")
-			  .attr("x",function(d, i) { return scaleX(i + 0.5); })
-			  .attr("y",scaleY(-0.2))
+			  .attr("x",function(d, i) { return scX(i + 0.5); })
+			  .attr("y",scY(-0.2))
 			  .text(function(d) { return d })
 			  ;
 			svg.selectAll("text.gaugeY")
@@ -238,8 +238,8 @@
 			  .attr("font-size",10)
 			  .attr("text-anchor","middle")
 			  .attr("dominant-baseline","middle")
-			  .attr("x",scaleX(-0.2))
-			  .attr("y",function(d, i) { return scaleY(i + 0.5); })
+			  .attr("x",scX(-0.2))
+			  .attr("y",function(d, i) { return scY(i + 0.5); })
 			  .text(function(d) { return d })
 			  ;
 			var appendtext = function(d) {
@@ -255,10 +255,10 @@
 					g.append("text")
 					.attr("text-anchor","middle")
 					.attr("dominant-baseline","text-after-edge")
-					.attr("x", scaleX(x))
+					.attr("x", scX(x))
 					.attr("y", 0)
 					.attr("fill", colormap[d[0]])
-					.attr("transform", "matrix(1, 0, 0, " + (1/chs.length) + ", 0, " + scaleY(y) + ")")
+					.attr("transform", "matrix(1, 0, 0, " + (1/chs.length) + ", 0, " + scY(y) + ")")
 					.text(chs[i])
 					;
 				}
@@ -271,7 +271,7 @@
 			svg.selectAll("g.pcs1")
 			  .data(pcs1)
 			  .enter().append("g").attr("class","pcs1")
-			  .attr("transform", function(d) { return "rotate(180 " + scaleX(d[1] - 0.5) + " " + scaleY(d[2] - 0.5) + ")" })
+			  .attr("transform", function(d) { return "rotate(180 " + scX(d[1] - 0.5) + " " + scY(d[2] - 0.5) + ")" })
 			  .each(appendtext)
 			  ;
 		})()</script>
