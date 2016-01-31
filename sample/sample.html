@@ -245,7 +245,7 @@
 			  .enter().append("text").attr("class","gaugeX")
 			  .attr("font-size",10)
 			  .attr("text-anchor","middle")
-			  .attr("dominant-baseline","central")
+			  // .attr("dominant-baseline","central")
 			  .attr("x",function(d, i) { return scX(i + 0.5); })
 			  .attr("y",scY(-0.2))
 			  .text(function(d) { return d })
@@ -255,7 +255,7 @@
 			  .enter().append("text").attr("class","gaugeY")
 			  .attr("font-size",10)
 			  .attr("text-anchor","middle")
-			  .attr("dominant-baseline","central")
+			  // .attr("dominant-baseline","central")
 			  .attr("x",scX(-0.2))
 			  .attr("y",function(d, i) { return scY(i + 0.5); })
 			  .text(function(d) { return d })
@@ -314,7 +314,7 @@
 				textlist.unshift('\u2617');
 				g
 					.attr("text-anchor","middle")
-					.attr("dominant-baseline","text-after-edge")
+					// .attr("dominant-baseline","text-after-edge")
 					.attr("font-size", boardHeight / 15)
 					.attr("transform", "matrix(" + [1, 0, 0, 1, 25 + 45 + boardWidth, 20].join() + ")")
 					;
@@ -331,7 +331,7 @@
 				textlist.unshift('\u2616');
 				g
 					.attr("text-anchor","middle")
-					.attr("dominant-baseline","text-after-edge")
+					// .attr("dominant-baseline","text-after-edge")
 					.attr("font-size", boardHeight / 15)
 					.attr("transform", "matrix(" + [1, 0, 0, -1, 25, boardHeight].join() + ")")
 					;
