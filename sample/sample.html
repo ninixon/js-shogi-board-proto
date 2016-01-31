@@ -292,6 +292,58 @@
 			  .attr("transform", function(d) { return "rotate(180 " + scX(d[1] - 0.5) + " " + scY(d[2] - 0.5) + ")" })
 			  .each(appendtext)
 			  ;
+			var ps2textlist = function(ps) {
+				var res = [];
+				["HI","KA","KI","GI","KE","KY","FU"].forEach(function(k) {
+					if(ps[k]) {
+						res.push(textmap[k]);
+						if (ps[k] > 2) {
+							res.push(ps[k]);
+						} else if (ps[k] == 2) {
+							res.push(textmap[k]);
+						}
+					}
+				});
+				if (res.length == 0) {
+					res.push('な');
+					res.push('し');
+				}
+				return res;
+			};
+			(function(g){
+				var textlist = ps2textlist(ps0);
+				textlist.unshift('\u2617');
+				g
+					.attr("text-anchor","middle")
+					.attr("dominant-baseline","text-after-edge")
+					.attr("font-size", boardHeight / 15)
+					.attr("transform", "matrix(" + [1, 0, 0, 1, 25 + 45 + boardWidth, 20].join() + ")")
+					;
+				g.selectAll("text").data(textlist)
+					.enter().append("text")
+					.text(function(d){return d;})
+					// .attr("transform", "matrix(" + [-1, 0, 0, 1, 0, 0].join() + ")")
+					.attr("x", 0)
+					.attr("y", function(d, i){return (i+1) * boardHeight / 15; })
+				;
+			})(svg.append("g"));
+			(function(g){
+				var textlist = ps2textlist(ps1);
+				textlist.unshift('\u2616');
+				g
+					.attr("text-anchor","middle")
+					.attr("dominant-baseline","text-after-edge")
+					.attr("font-size", boardHeight / 15)
+					.attr("transform", "matrix(" + [1, 0, 0, -1, 25, boardHeight].join() + ")")
+					;
+				g.selectAll("text").data(textlist)
+					.enter().append("text")
+					.text(function(d){return d;})
+					.attr("transform", "matrix(" + [-1, 0, 0, 1, 0, 0].join() + ")")
+					.attr("x", 0)
+					.attr("y", function(d, i){return i * boardHeight / 15; })
+				;
+			})(svg.append("g"));
 		})()</script>
 	</body>
 </html>
