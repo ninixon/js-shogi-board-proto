@@ -276,7 +276,7 @@
 					.attr("x", scX(x))
 					.attr("y", 0)
 					.attr("fill", colormap[d[0]])
-					.attr("transform", "matrix(1, 0, 0, " + (1/chs.length) + ", 0, " + scY(y) + ")")
+					.attr("transform", "matrix(" + [1, 0, 0, 1/chs.length, 0, scY(y)].join() + ")")
 					.text(chs[i])
 					;
 				}
@@ -289,7 +289,7 @@
 			svg.selectAll("g.pcs1")
 			  .data(pcs1)
 			  .enter().append("g").attr("class","pcs1")
-			  .attr("transform", function(d) { return "rotate(180 " + scX(d[1] - 0.5) + " " + scY(d[2] - 0.5) + ")" })
+			  .attr("transform", function(d) { return "rotate(" + [180, scX(d[1] - 0.5), scY(d[2] - 0.5)].join(' ') + ")" })
 			  .each(appendtext)
 			  ;
 			var ps2textlist = function(ps) {
