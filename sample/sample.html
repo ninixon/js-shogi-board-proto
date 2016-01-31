@@ -92,6 +92,7 @@
 			,"TO":"red"
 			,"UM":"red"
 			};
+			var nummap = [null, '一','二','三','四','五','六','七','八','九','十'];
 		</script>
 		<script>(function() {
 			var dhandler = function(d) {
@@ -173,13 +174,13 @@
 			];
 			var hilite = [ 7, 5 ];
 			var ps0 =
-			{ "FU": 18
-			, "KY": 4
-			, "KE": 4
-			, "GI": 4
-			, "KI": 4
-			, "KA": 2
-			, "HI": 2
+			{ "FU": 0
+			, "KY": 0
+			, "KE": 0
+			, "GI": 0
+			, "KI": 0
+			, "KA": 0
+			, "HI": 0
 			};
 			var ps1 =
 			{ "FU": 18
@@ -292,55 +293,68 @@
 			  .attr("transform", function(d) { return "rotate(" + [180, scX(d[1] - 0.5), scY(d[2] - 0.5)].join(' ') + ")" })
 			  .each(appendtext)
 			  ;
-			var ps2textlist = function(ps) {
+			var ps2textlist = function(playerlabel, ps) {
 				var res = [];
 				["HI","KA","KI","GI","KE","KY","FU"].forEach(function(k) {
 					if(ps[k]) {
-						res.push(textmap[k]);
-						if (ps[k] > 2) {
-							res.push(ps[k]);
+						res.push([textmap[k], 22]);
+						if (ps[k] > 10) {
+							res.push([nummap[10], 16]);
+							res.push([nummap[ps[k] - 10], 16]);
+						} else if (ps[k] > 2) {
+							res.push([nummap[ps[k]], 20]);
 						} else if (ps[k] == 2) {
-							res.push(textmap[k]);
+							res.push([textmap[k], 22]);
 						}
 					}
 				});
 				if (res.length == 0) {
-					res = "持駒なし".split('');
+					res =
+					[["持", 18]
+					,["駒", 18]
+					,["な", 18]
+					,["し", 18]
+					];
+				}
+				res.unshift([playerlabel, 25]);
+				var y = 0 - res[0][1];
+				for (var i = 0; i < res.length; ++i) {
+					var h = res[i][1];
+					y += h;
+					res[i].push(y);
 				}
 				return res;
 			};
 			(function(g){
-				var textlist = ps2textlist(ps0);
-				textlist.unshift('\u2617');
+				var textlist = ps2textlist('\u2617', ps0);
 				g
 					.attr("text-anchor","middle")
 					// .attr("dominant-baseline","text-after-edge")
-					.attr("font-size", boardHeight / 15)
 					.attr("transform", "matrix(" + [1, 0, 0, 1, 25 + 45 + boardWidth, 20].join() + ")")
 					;
 				g.selectAll("text").data(textlist)
 					.enter().append("text")
-					.text(function(d){return d;})
+					.text(function(d){return d[0];})
 					// .attr("transform", "matrix(" + [-1, 0, 0, 1, 0, 0].join() + ")")
+					.attr("font-size", function(d) { return d[1]; })
 					.attr("x", 0)
-					.attr("y", function(d, i){return (i+1) * boardHeight / 15; })
+					.attr("y", function(d){ return d[2]; })
 				;
 			})(svg.append("g"));
 			(function(g){
-				var textlist = ps2textlist(ps1);
-				textlist.unshift('\u2616');
+				var textlist = ps2textlist('\u2616', ps1);
 				g
 					.attr("text-anchor","middle")
 					// .attr("dominant-baseline","text-after-edge")
-					.attr("font-size", boardHeight / 15)
 					.attr("transform", "matrix(" + [1, 0, 0, -1, 25, boardHeight].join() + ")")
 					;
 				g.selectAll("text").data(textlist)
 					.enter().append("text")
-					.text(function(d){return d;})
+					.text(function(d){return d[0];})
+					.attr("font-size", function(d) { return d[1]; })
 					.attr("transform", "matrix(" + [-1, 0, 0, 1, 0, 0].join() + ")")
 					.attr("x", 0)
-					.attr("y", function(d, i){return i * boardHeight / 15; })
+					.attr("y", function(d){ return d[2]; })
 				;
 			})(svg.append("g"));
 		})()</script>
