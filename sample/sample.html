@@ -269,10 +269,10 @@
 				var y0 = d[2];
 
 				for (var i = 0; i < chs.length; ++i) {
-					var y = y0 - 1 + (i+1) /chs.length
+					var y = y0 - 1 + (i+0.8) /chs.length
 					g.append("text")
 					.attr("text-anchor","middle")
-					.attr("dominant-baseline","text-after-edge")
+					// .attr("dominant-baseline","text-after-edge")
 					.attr("x", scX(x))
 					.attr("y", 0)
 					.attr("fill", colormap[d[0]])
