@@ -276,7 +276,7 @@
 					.attr("x", scX(x))
 					.attr("y", 0)
 					.attr("fill", colormap[d[0]])
-					.attr("transform", "matrix(" + [1, 0, 0, 1/chs.length, 0, scY(y)].join() + ")")
+					.attr("transform", "matrix(" + [1, 0, 0, 1/Math.pow(chs.length,0.9), 0, scY(y)].join() + ")")
 					.text(chs[i])
 					;
 				}
