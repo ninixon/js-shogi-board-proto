@@ -28,37 +28,6 @@
 			,[["NK",0],["NY",0],["NG",0],["KI",0],["OU",0],["KI",0],["GI",0],["KE",0],["KY",0]]
 			];
 		</script>
-
-		<script>(function() {
-			var sel = d3.select("#theboard");
-			sel.node().style.padding="11px 11px 10px"; // does not work
-			sel.node().style.borderCollapse="collapse";
-			sel.node().style.backgroundImage = "url(" + "../../" + ShogiBoard.preset.grid.dot_xy + ")";
-			sel
-				.selectAll("tr").data(bd)
-				.enter().append("tr")
-				.selectAll("td").data(d3.entries)
-				.enter().append("td")
-				.attr("style", "margin: 0; padding: 0")
-				.each(function(d) {
-					var value = d['value'];
-					var src;
-					if(value) {
-						src = "../../" + ShogiBoard.preset.piece.ryoko_torafu[value[0]][value[1]];
-					} else {
-						src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAAwCAYAAACITIOYAAAAH0lEQVRo3u3BMQEAAADCoPVPbQZ/oAAAAAAAAAAAPgMgcAAB3kcvEQAAAABJRU5ErkJggg==";
-					}
-					var img = this.firstChild;
-					if (img) {
-						img.src = src;
-					} else {
-						img = document.createElement("img");
-						img.src = src;
-						this.appendChild(img);
-					}
-				})
-			;
-		})();</script>
 		<script>
 			var textmap =
 			{"FU":"歩"
@@ -94,61 +63,6 @@
 			};
 			var nummap = [null, '一','二','三','四','五','六','七','八','九','十'];
 		</script>
-		<script>(function() {
-			var dhandler = function(d) {
-				var value = d['value'];
-				var div = document.createElement('div');
-				var style = "font-size: 1.8em;";
-				var transform = [];
-				if (value && value[1] == 1) {
-					transform.push("rotate(180deg)");
-				}
-				if (value) {
-					var chs = textmap[value[0]].split('');
-					var firstchar = true;
-					for (var i = 0; i < chs.length; ++i) {
-						if (firstchar) {
-							firstchar = false;
-						} else {
-							div.appendChild(document.createElement('br'));
-						}
-						var c = chs[i];
-						var span = document.createElement('span');
-						var span_style = "display: inline-block;width:1em;";
-						if (chs.length > 1) {
-							span_style += "transform:scaleY(0.5);";
-						}
-						span.style = span_style;
-						span.appendChild(document.createTextNode(c));
-						div.appendChild(span);
-					}
-					if (chs.length > 1) {
-						// transform.push("scaleY(0.5)");
-						style += "line-height: 0.5;";
-					}
-
-					var color = colormap[value[0]];
-					style += "color:" + color + ";";
-				} else {
-					div.appendChild(document.createTextNode(' '));
-				}
-				if (transform.length > 0) {
-					style += "transform: " + transform.join(' ') + ';'
-				}
-				div.style = style;
-				this.appendChild(div);
-			};
-			var sel = d3.select("#theboard2");
-			sel.node().style.borderCollapse="collapse";
-			sel
-				.selectAll("tr").data(bd)
-				.enter().append("tr")
-				.selectAll("td").data(d3.entries)
-				.enter().append("td")
-				.attr("style", "margin: 0; padding: 0; border: solid black 1px; width: 2em; height: 2.5em; text-align: center; overflow: hidden;")
-				.each(dhandler)
-				;
-		})();</script>
 		<script>
 			var pcs0 =
 			[ ["TO",9,7] , ["TO",8,7] , ["TO",7,7]
