@@ -60,9 +60,9 @@
 		</script>
 		<script>(function() {
 			var sb = new ShogiBoard();
-			sb.tosvg("#theboard", pcs0, pcs1, ps0, pcs1);
-			sb.tosvg("#theboard2", pcs0, pcs1, ps0, pcs1);
-			sb.tosvg("#theboard3", pcs0, pcs1, ps0, pcs1);
+			sb.tosvg(d3.select("#theboard"), pcs0, pcs1, ps0, pcs1);
+			sb.tosvg(d3.select("#theboard2"), pcs0, pcs1, ps0, pcs1);
+			sb.tosvg(d3.select("#theboard3"), pcs0, pcs1, ps0, pcs1);
 		})()</script>
 	</body>
 </html>
