@@ -8,10 +8,10 @@
 		</style>
 	</head>
 	<body>
-		<table id=theboard >
-		</table>
-		<table id=theboard2>
-		</table>
+		<div id=theboard >
+		</div>
+		<div id=theboard2>
+		</div>
 		<div id=theboard3>
 		</div>
 
@@ -62,7 +62,7 @@
 			var sb = new ShogiBoard();
 			sb.tosvg(d3.select("#theboard"), pcs0, pcs1, ps0, ps1);
 			sb.tosvg(d3.select("#theboard2"), pcs0, pcs1, ps0, ps1);
-			sb.tosvg(d3.select("#theboard3"), pcs0, pcs1, ps0, pc1);
+			sb.tosvg(d3.select("#theboard3"), pcs0, pcs1, ps0, ps1);
 		})()</script>
 	</body>
 </html>
