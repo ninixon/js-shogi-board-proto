@@ -52,7 +52,9 @@ var ShogiBoard = function() {};
 		var svgHeight = 360;
 		var boardWidth = 300;
 		var boardHeight = 330;
-		var svg = sel.append("svg")
+		var svg = sel.selectAll("svg")
+		  .data([1])
+		  .enter().append("svg")
 		  .attr("width", svgWidth)
 		  .attr("height", svgHeight)
 		  ;
