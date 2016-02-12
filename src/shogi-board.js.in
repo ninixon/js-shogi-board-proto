@@ -1,5 +1,8 @@
 // vi: set ft=javascript :
-var ShogiBoard = function() {};
+var ShogiBoard = function(opt) {
+	this.svgWidth = opt.width;
+	this.svgHeight = opt.height;
+};
 (function() {
 	ShogiBoard.prototype.piece_textmap =
 	{"FU":"歩"
@@ -48,15 +51,13 @@ var ShogiBoard = function() {};
 	];
 	ShogiBoard.prototype.tosvg = function(sel,pcs0,pcs1,ps0,ps1,hllist) {
 		var sb = this;
-		var svgWidth = 420;
-		var svgHeight = 360;
 		var boardWidth = 300;
 		var boardHeight = 330;
 		var svg = sel.selectAll("svg")
 		  .data([1])
 		  .enter().append("svg")
-		  .attr("width", svgWidth)
-		  .attr("height", svgHeight)
+		  .attr("width", this.svgWidth)
+		  .attr("height", this.svgHeight)
 		  ;
 		var scX = d3.scale.linear().domain([9, 0]).range([45, boardWidth + 45]);
 		var scY = d3.scale.linear().domain([0, 9]).range([20, boardHeight + 20]);
