@@ -46,7 +46,7 @@ var ShogiBoard = function() {};
 	,'九'
 	,'十'
 	];
-	ShogiBoard.prototype.tosvg = function(sel,pcs0,pcs1,ps0,ps1) {
+	ShogiBoard.prototype.tosvg = function(sel,pcs0,pcs1,ps0,ps1,hllist) {
 		var sb = this;
 		var svgWidth = 420;
 		var svgHeight = 360;
@@ -60,11 +60,14 @@ var ShogiBoard = function() {};
 		  ;
 		var scX = d3.scale.linear().domain([9, 0]).range([45, boardWidth + 45]);
 		var scY = d3.scale.linear().domain([0, 9]).range([20, boardHeight + 20]);
-		svg.append("rect")
-		  .attr("x", Math.min(scX(hilite[0]), scX(hilite[0] - 1)))
-		  .attr("y", Math.min(scY(hilite[1]), scY(hilite[1] - 1)))
-		  .attr("width", Math.abs(scX(hilite[0]) - scX(hilite[0] - 1)))
-		  .attr("height", Math.abs(scY(hilite[1]) - scY(hilite[1] - 1)))
+		svg.selectAll("rect.hilite")
+		  .data(hllist)
+		  .enter().append("rect")
+		  .attr("class", "hilite")
+		  .attr("x", function(d) { return Math.min(scX(d[0]), scX(d[0] - 1))})
+		  .attr("y", function(d) { return Math.min(scY(d[1]), scY(d[1] - 1))})
+		  .attr("width", function(d) { return Math.abs(scX(d[0]) - scX(d[0] - 1))})
+		  .attr("height", function(d) { return Math.abs(scY(d[1]) - scY(d[1] - 1))})
 		  .attr("fill", "#CCFFAA")
 		  ;
 		svg.selectAll("line.gridX")
