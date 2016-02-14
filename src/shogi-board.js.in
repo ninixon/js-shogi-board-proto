@@ -2,6 +2,8 @@
 var ShogiBoard = function(opt) {
 	this.svgWidth = opt.width;
 	this.svgHeight = opt.height;
+	this.boardWidth = 300;
+	this.boardHeight = 330;
 };
 (function() {
 	ShogiBoard.prototype.piece_textmap =
@@ -51,16 +53,14 @@ var ShogiBoard = function(opt) {
 	];
 	ShogiBoard.prototype.tosvg = function(sel,pcs0,pcs1,ps0,ps1,hllist) {
 		var sb = this;
-		var boardWidth = 300;
-		var boardHeight = 330;
 		var svg = sel.selectAll("svg")
 		  .data([1])
 		  .enter().append("svg")
 		  .attr("width", this.svgWidth)
 		  .attr("height", this.svgHeight)
 		  ;
-		var scX = d3.scale.linear().domain([9, 0]).range([45, boardWidth + 45]);
-		var scY = d3.scale.linear().domain([0, 9]).range([20, boardHeight + 20]);
+		var scX = d3.scale.linear().domain([9, 0]).range([45, sb.boardWidth + 45]);
+		var scY = d3.scale.linear().domain([0, 9]).range([20, sb.boardHeight + 20]);
 		svg.selectAll("rect.hilite")
 		  .data(hllist)
 		  .enter().append("rect")
@@ -190,7 +190,7 @@ var ShogiBoard = function(opt) {
 			g
 				.attr("text-anchor","middle")
 				// .attr("dominant-baseline","text-after-edge")
-				.attr("transform", "matrix(" + [1, 0, 0, 1, 25 + 45 + boardWidth, 20].join() + ")")
+				.attr("transform", "matrix(" + [1, 0, 0, 1, 25 + 45 + sb.boardWidth, 20].join() + ")")
 				;
 			g.selectAll("text").data(textlist)
 				.enter().append("text")
@@ -206,7 +206,7 @@ var ShogiBoard = function(opt) {
 			g
 				.attr("text-anchor","middle")
 				// .attr("dominant-baseline","text-after-edge")
-				.attr("transform", "matrix(" + [1, 0, 0, -1, 25, boardHeight].join() + ")")
+				.attr("transform", "matrix(" + [1, 0, 0, -1, 25, sb.boardHeight].join() + ")")
 				;
 			g.selectAll("text").data(textlist)
 				.enter().append("text")
