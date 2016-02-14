@@ -59,10 +59,7 @@
 			};
 		</script>
 		<script>(function() {
-			var sb = new ShogiBoard(
-			{ width: 420
-			, height: 360
-			});
+			var sb = new ShogiBoard();
 			sb.tosvg(d3.select("#theboard"), pcs0, pcs1, ps0, ps1, [ [7, 5] ]);
 			sb.tosvg(d3.select("#theboard2"), pcs0, pcs1, ps0, ps1,
 			[[7, 7]

@@ -1,7 +1,7 @@
 // vi: set ft=javascript :
 var ShogiBoard = function(opt) {
-	this.svgWidth = opt.width;
-	this.svgHeight = opt.height;
+	this.svgWidth = opt && opt.width || 420;
+	this.svgHeight = opt && opt.height || 360;
 	this.boardWidth = 300;
 	this.boardHeight = 330;
 };
