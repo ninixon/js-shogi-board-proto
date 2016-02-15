@@ -2,8 +2,8 @@
 var ShogiBoard = function(opt) {
 	this.svgWidth = opt && opt.width || 420;
 	this.svgHeight = opt && opt.height || 360;
-	this.boardWidth = 300;
-	this.boardHeight = 330;
+	this.boardWidth = this.svgWidth - (5 * 2 + 50 * 2 + 10);
+	this.boardHeight = this.svgHeight - (5 * 2 + 10 * 2);
 };
 (function() {
 	ShogiBoard.prototype.piece_textmap =
