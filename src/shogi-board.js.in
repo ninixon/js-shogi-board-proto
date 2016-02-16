@@ -4,6 +4,10 @@ var ShogiBoard = function(opt) {
 	this.svgHeight = opt && opt.height || 360;
 	this.boardWidth = this.svgWidth - (5 * 2 + 50 * 2 + 10);
 	this.boardHeight = this.svgHeight - (5 * 2 + 10 * 2);
+	this.cellWidth = this.boardWidth / 9;
+	this.cellHeight = this.boardHeight / 9;
+	this.boardMarginLeft = 45;
+	this.boardMarginTop = 20;
 };
 (function() {
 	ShogiBoard.prototype.piece_textmap =
@@ -59,8 +63,8 @@ var ShogiBoard = function(opt) {
 		  .attr("width", this.svgWidth)
 		  .attr("height", this.svgHeight)
 		  ;
-		var scX = d3.scale.linear().domain([9, 0]).range([45, sb.boardWidth + 45]);
-		var scY = d3.scale.linear().domain([0, 9]).range([20, sb.boardHeight + 20]);
+		var scX = d3.scale.linear().domain([9, 0]).range([sb.boardMarginLeft, sb.boardWidth + sb.boardMarginLeft]);
+		var scY = d3.scale.linear().domain([0, 9]).range([sb.boardMarginTop, sb.boardHeight + sb.boardMarginTop]);
 		svg.selectAll("rect.hilite")
 		  .data(hllist)
 		  .enter().append("rect")
