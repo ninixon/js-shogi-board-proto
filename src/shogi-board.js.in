@@ -8,6 +8,7 @@ var ShogiBoard = function(opt) {
 	this.cellHeight = this.boardHeight / 9;
 	this.boardMarginLeft = 45;
 	this.boardMarginTop = 20;
+	this.gaugeFontSize = 13;
 };
 (function() {
 	ShogiBoard.prototype.piece_textmap =
@@ -108,7 +109,7 @@ var ShogiBoard = function(opt) {
 		svg.selectAll("text.gaugeX")
 		  .data(['１','２','３','４','５','６','７','８','９'])
 		  .enter().append("text").attr("class","gaugeX")
-		  .attr("font-size",10)
+		  .attr("font-size",sb.gaugeFontSize)
 		  .attr("text-anchor","middle")
 		  // .attr("dominant-baseline","central")
 		  .attr("x",function(d, i) { return scX(i + 0.5); })
@@ -118,7 +119,7 @@ var ShogiBoard = function(opt) {
 		svg.selectAll("text.gaugeY")
 		  .data(['一','二','三','四','五','六','七','八','九'])
 		  .enter().append("text").attr("class","gaugeY")
-		  .attr("font-size",10)
+		  .attr("font-size",sb.gaugeFontSize)
 		  .attr("text-anchor","middle")
 		  // .attr("dominant-baseline","central")
 		  .attr("x",scX(-0.2))
