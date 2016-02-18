@@ -59,9 +59,10 @@
 			};
 		</script>
 		<script>(function() {
-			var sb = new ShogiBoard();
-			sb.tosvg(d3.select("#theboard"), pcs0, pcs1, ps0, ps1, [ [7, 5] ]);
-			sb.tosvg(d3.select("#theboard2"), pcs0, pcs1, ps0, ps1,
+			new ShogiBoard().tosvg(d3.select("#theboard"), pcs0, pcs1, ps0, ps1, [ [7, 5] ]);
+			new ShogiBoard({
+				width: 700, height: 600
+			}).tosvg(d3.select("#theboard2"), pcs0, pcs1, ps0, ps1,
 			[[7, 7]
 			,[7, 8]
 			,[7, 9]
@@ -71,7 +72,7 @@
 			,[9, 8]
 			,[9, 9]
 			 ]);
-			sb.tosvg(d3.select("#theboard3"), pcs0, pcs1, ps0, ps1, []);
+			new ShogiBoard().tosvg(d3.select("#theboard3"), pcs0, pcs1, ps0, ps1, []);
 		})()</script>
 	</body>
 </html>

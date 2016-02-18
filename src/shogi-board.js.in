@@ -2,15 +2,15 @@
 var ShogiBoard = function(opt) {
 	this.svgWidth = opt && opt.width || 420;
 	this.svgHeight = opt && opt.height || 360;
-	this.boardWidth = this.svgWidth - (5 * 2 + 50 * 2 + 10);
-	this.boardHeight = this.svgHeight - (5 * 2 + 10 * 2);
+	this.boardHeight = this.svgHeight * 0.9;
+	this.boardWidth = this.boardHeight * 0.9;
 	this.cellWidth = this.boardWidth / 9;
 	this.cellHeight = this.boardHeight / 9;
 	this.boardMarginLeft = (this.svgWidth - this.boardWidth) * 0.5;
 	this.boardMarginTop = (this.svgHeight - this.boardHeight) * 0.5;
-	this.gaugeFontSize = 10;
-	this.pieceFontSize = 30;
-	this.pieceStandWidth = 25;
+	this.pieceFontSize = Math.min(this.boardWidth, this.boardHeight) / 10;
+	this.gaugeFontSize = this.pieceFontSize / 4;
+	this.pieceStandWidth = this.pieceFontSize * 0.9;
 };
 (function() {
 	ShogiBoard.prototype.piece_textmap =
@@ -184,7 +184,7 @@ var ShogiBoard = function(opt) {
 				];
 			}
 			res.unshift([playerlabel, sb.pieceFontSize]);
-			var y = 0 - 25;
+			var y = 0;
 			for (var i = 0; i < res.length; ++i) {
 				var h = res[i][1];
 				y += h;
@@ -197,7 +197,10 @@ var ShogiBoard = function(opt) {
 			g
 				.attr("text-anchor","middle")
 				// .attr("dominant-baseline","text-after-edge")
-				.attr("transform", "matrix(" + [1, 0, 0, 1, sb.pieceStandWidth * 0.5 + sb.gaugeFontSize * 1.5 + sb.boardMarginLeft + sb.boardWidth, sb.boardMarginTop].join() + ")")
+				.attr("transform", "matrix(" + [1, 0, 0, 1,
+						sb.boardMarginLeft + sb.boardWidth + (sb.pieceStandWidth * 0.5 + sb.gaugeFontSize * 2.0),
+						sb.boardMarginTop - sb.gaugeFontSize
+				].join() + ")")
 				;
 			g.selectAll("text").data(textlist)
 				.enter().append("text")
@@ -213,7 +216,10 @@ var ShogiBoard = function(opt) {
 			g
 				.attr("text-anchor","middle")
 				// .attr("dominant-baseline","text-after-edge")
-				.attr("transform", "matrix(" + [1, 0, 0, -1, sb.boardMarginLeft - sb.pieceStandWidth * 0.5 - sb.gaugeFontSize * 1.5, sb.boardHeight].join() + ")")
+				.attr("transform", "matrix(" + [1, 0, 0, -1,
+						sb.boardMarginLeft - (sb.pieceStandWidth * 0.5 + sb.gaugeFontSize * 0.5),
+						sb.boardMarginTop + sb.boardHeight + sb.gaugeFontSize
+				].join() + ")")
 				;
 			g.selectAll("text").data(textlist)
 				.enter().append("text")
