@@ -113,7 +113,7 @@ var ShogiBoard = function(opt) {
 		  .attr("text-anchor","middle")
 		  // .attr("dominant-baseline","central")
 		  .attr("x",function(d, i) { return scX(i + 0.5); })
-		  .attr("y",scY(-0.2) + 4)
+		  .attr("y",scY(0) - sb.gaugeFontSize * 0.4)
 		  .text(function(d) { return d })
 		  ;
 		svg.selectAll("text.gaugeY")
@@ -122,8 +122,8 @@ var ShogiBoard = function(opt) {
 		  .attr("font-size",sb.gaugeFontSize)
 		  .attr("text-anchor","middle")
 		  // .attr("dominant-baseline","central")
-		  .attr("x",scX(-0.2))
-		  .attr("y",function(d, i) { return scY(i + 0.5) + 4; })
+		  .attr("x",scX(0) + sb.gaugeFontSize)
+		  .attr("y",function(d, i) { return scY(i + 0.5) + sb.gaugeFontSize * 0.4; })
 		  .text(function(d) { return d })
 		  ;
 		var appendtext = function(d) {
