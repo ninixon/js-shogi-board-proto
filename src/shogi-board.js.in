@@ -9,6 +9,7 @@ var ShogiBoard = function(opt) {
 	this.boardMarginLeft = 45;
 	this.boardMarginTop = 20;
 	this.gaugeFontSize = 10;
+	this.pieceFontSize = 30;
 };
 (function() {
 	ShogiBoard.prototype.piece_textmap =
@@ -128,7 +129,7 @@ var ShogiBoard = function(opt) {
 		  ;
 		var appendtext = function(d) {
 			var g = d3.select(this);
-			g.attr("font-size",30);
+			g.attr("font-size",sb.pieceFontSize);
 
 			var chs = sb.piece_textmap[d[0]].split('');
 			var x = d[1] - 0.5;
