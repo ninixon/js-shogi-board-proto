@@ -163,14 +163,14 @@ var ShogiBoard = function(opt) {
 			var res = [];
 			["HI","KA","KI","GI","KE","KY","FU"].forEach(function(k) {
 				if(ps[k]) {
-					res.push([sb.piece_textmap[k], 22]);
+					res.push([sb.piece_textmap[k], sb.pieceFontSize * 0.7]);
 					if (ps[k] > 10) {
-						res.push([sb.nummap[10], 16]);
-						res.push([sb.nummap[ps[k] - 10], 16]);
+						res.push([sb.nummap[10], sb.pieceFontSize * 0.55]);
+						res.push([sb.nummap[ps[k] - 10], sb.pieceFontSize * 0.55]);
 					} else if (ps[k] > 2) {
-						res.push([sb.nummap[ps[k]], 20]);
+						res.push([sb.nummap[ps[k]], sb.pieceFontSize * 0.65]);
 					} else if (ps[k] == 2) {
-						res.push([sb.piece_textmap[k], 22]);
+						res.push([sb.piece_textmap[k], sb.pieceFontSize * 0.7]);
 					}
 				}
 			});
