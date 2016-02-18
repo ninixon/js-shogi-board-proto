@@ -10,6 +10,7 @@ var ShogiBoard = function(opt) {
 	this.boardMarginTop = 20;
 	this.gaugeFontSize = 10;
 	this.pieceFontSize = 30;
+	this.pieceStandWidth = 25;
 };
 (function() {
 	ShogiBoard.prototype.piece_textmap =
@@ -196,7 +197,7 @@ var ShogiBoard = function(opt) {
 			g
 				.attr("text-anchor","middle")
 				// .attr("dominant-baseline","text-after-edge")
-				.attr("transform", "matrix(" + [1, 0, 0, 1, 25 + 45 + sb.boardWidth, 20].join() + ")")
+				.attr("transform", "matrix(" + [1, 0, 0, 1, sb.pieceStandWidth * 0.5 + sb.gaugeFontSize * 1.5 + sb.boardMarginLeft + sb.boardWidth, sb.boardMarginTop].join() + ")")
 				;
 			g.selectAll("text").data(textlist)
 				.enter().append("text")
@@ -212,7 +213,7 @@ var ShogiBoard = function(opt) {
 			g
 				.attr("text-anchor","middle")
 				// .attr("dominant-baseline","text-after-edge")
-				.attr("transform", "matrix(" + [1, 0, 0, -1, 25, sb.boardHeight].join() + ")")
+				.attr("transform", "matrix(" + [1, 0, 0, -1, sb.boardMarginLeft - sb.pieceStandWidth * 0.5 - sb.gaugeFontSize * 1.5, sb.boardHeight].join() + ")")
 				;
 			g.selectAll("text").data(textlist)
 				.enter().append("text")
