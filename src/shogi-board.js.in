@@ -176,10 +176,10 @@ var ShogiBoard = function(opt) {
 			});
 			if (res.length == 0) {
 				res =
-				[["持", 18]
-				,["駒", 18]
-				,["な", 18]
-				,["し", 18]
+				[["持", sb.pieceFontSize * 0.6]
+				,["駒", sb.pieceFontSize * 0.6]
+				,["な", sb.pieceFontSize * 0.6]
+				,["し", sb.pieceFontSize * 0.6]
 				];
 			}
 			res.unshift([playerlabel, sb.pieceFontSize]);
