@@ -8,7 +8,7 @@ var ShogiBoard = function(opt) {
 	this.cellHeight = this.boardHeight / 9;
 	this.boardMarginLeft = 45;
 	this.boardMarginTop = 20;
-	this.gaugeFontSize = 13;
+	this.gaugeFontSize = 10;
 };
 (function() {
 	ShogiBoard.prototype.piece_textmap =
