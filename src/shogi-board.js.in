@@ -11,6 +11,7 @@ var ShogiBoard = function(opt) {
 	this.pieceFontSize = Math.min(this.boardWidth, this.boardHeight) / 10;
 	this.gaugeFontSize = this.pieceFontSize / 4;
 	this.pieceStandWidth = this.pieceFontSize * 0.9;
+	this.stars = [[3, 3], [3, 6], [6, 3], [6, 6]];
 };
 (function() {
 	ShogiBoard.prototype.piece_textmap =
@@ -62,55 +63,78 @@ var ShogiBoard = function(opt) {
 		var sb = this;
 		var svg = sel.selectAll("svg")
 		  .data([1])
-		  .enter().append("svg")
+		svg.enter().append("svg")
+		  ;
+		svg
 		  .attr("width", this.svgWidth)
 		  .attr("height", this.svgHeight)
 		  ;
 		var scX = d3.scale.linear().domain([9, 0]).range([sb.boardMarginLeft, sb.boardWidth + sb.boardMarginLeft]);
 		var scY = d3.scale.linear().domain([0, 9]).range([sb.boardMarginTop, sb.boardHeight + sb.boardMarginTop]);
-		svg.selectAll("rect.hilite")
+		var sel_hilite = svg.selectAll("rect.hilite")
 		  .data(hllist)
+		  ;
+		sel_hilite
 		  .enter().append("rect")
 		  .attr("class", "hilite")
+		  ;
+		sel_hilite
 		  .attr("x", function(d) { return Math.min(scX(d[0]), scX(d[0] - 1))})
 		  .attr("y", function(d) { return Math.min(scY(d[1]), scY(d[1] - 1))})
 		  .attr("width", function(d) { return Math.abs(scX(d[0]) - scX(d[0] - 1))})
 		  .attr("height", function(d) { return Math.abs(scY(d[1]) - scY(d[1] - 1))})
 		  .attr("fill", "#CCFFAA")
 		  ;
-		svg.selectAll("line.gridX")
+		var sel_gridX = svg.selectAll("line.gridX")
 		  .data(d3.range(0, 9+1, 1))
+		  ;
+		sel_gridX
 		  .enter().append("line")
 		  .attr("class", "gridX")
+		  ;
+		sel_gridX
 		  .attr("x1", function(d) { return scX(d) })
 		  .attr("y1", scY(0))
 		  .attr("x2", function(d) { return scX(d) })
 		  .attr("y2", scY(9))
 		  .attr("stroke", "black")
 		  ;
-		svg.selectAll("line.gridY")
+		var sel_gridY = svg.selectAll("line.gridY")
 		  .data(d3.range(0, 9+1, 1))
+		sel_gridY
 		  .enter().append("line")
 		  .attr("class", "gridY")
+		  ;
+		sel_gridY
 		  .attr("x1", scX(0))
 		  .attr("y1", function(d) { return scY(d) })
 		  .attr("x2", scX(9))
 		  .attr("y2", function(d) { return scY(d) })
 		  .attr("stroke", "black")
 		  ;
-		svg.selectAll("circle.star")
-		  .data([[3, 3], [3, 6], [6, 3], [6, 6]])
+		var sel_star = svg.selectAll("circle.star")
+		  .data(sb.stars)
+		sel_star
 		  .enter().append("circle")
 		  .attr("class", "star")
+		  ;
+		sel_star
+		  .exit().remove()
+		  ;
+		sel_star
 		  .attr("cx", function(d) { return scX(d[0]) })
 		  .attr("cy", function(d) { return scY(d[1]) })
 		  .attr("r", "3")
 		  .attr("stroke", "black")
 		  .attr("fill", "black")
 		  ;
-		svg.selectAll("text.gaugeX")
+		var sel_gaugeX = svg.selectAll("text.gaugeX")
 		  .data(['１','２','３','４','５','６','７','８','９'])
+		  ;
+		sel_gaugeX
 		  .enter().append("text").attr("class","gaugeX")
+		  ;
+		sel_gaugeX
 		  .attr("font-size",sb.gaugeFontSize)
 		  .attr("text-anchor","middle")
 		  // .attr("dominant-baseline","central")
@@ -118,9 +142,13 @@ var ShogiBoard = function(opt) {
 		  .attr("y",scY(0) - sb.gaugeFontSize * 0.4)
 		  .text(function(d) { return d })
 		  ;
-		svg.selectAll("text.gaugeY")
+		var sel_gaugeY = svg.selectAll("text.gaugeY")
 		  .data(['一','二','三','四','五','六','七','八','九'])
+		  ;
+		sel_gaugeY
 		  .enter().append("text").attr("class","gaugeY")
+		  ;
+		sel_gaugeY
 		  .attr("font-size",sb.gaugeFontSize)
 		  .attr("text-anchor","middle")
 		  // .attr("dominant-baseline","central")
@@ -128,9 +156,10 @@ var ShogiBoard = function(opt) {
 		  .attr("y",function(d, i) { return scY(i + 0.5) + sb.gaugeFontSize * 0.4; })
 		  .text(function(d) { return d })
 		  ;
-		var appendtext = function(d) {
+		var settext = function(d) {
 			var g = d3.select(this);
 			g.attr("font-size",sb.pieceFontSize);
+			g.selectAll("text").remove();
 
 			var chs = sb.piece_textmap[d[0]].split('');
 			var x = d[1] - 0.5;
@@ -149,16 +178,29 @@ var ShogiBoard = function(opt) {
 				;
 			}
 		};
-		svg.selectAll("g.pcs0")
+		var sel_pcs0 = svg.selectAll("g.pcs0")
 		  .data(pcs0)
-		  .enter().append("g").attr("class","pcs0")
-		  .each(appendtext)
 		  ;
-		svg.selectAll("g.pcs1")
+		sel_pcs0
+		  .enter().append("g").attr("class","pcs0")
+		  ;
+		sel_pcs0
+		  .exit().remove()
+		  ;
+		sel_pcs0
+		  .each(settext)
+		  ;
+		var sel_pcs1 = svg.selectAll("g.pcs1")
 		  .data(pcs1)
+		  ;
+		sel_pcs1
 		  .enter().append("g").attr("class","pcs1")
+		sel_pcs1
+		  .exit().remove()
+		  ;
+		sel_pcs1
 		  .attr("transform", function(d) { return "rotate(" + [180, scX(d[1] - 0.5), scY(d[2] - 0.5)].join(' ') + ")" })
-		  .each(appendtext)
+		  .each(settext)
 		  ;
 		var ps2textlist = function(playerlabel, ps) {
 			var res = [];
