@@ -8,12 +8,11 @@
 		</style>
 	</head>
 	<body>
-		<div id=theboard >
-		</div>
-		<div id=theboard2>
-		</div>
-		<div id=theboard3>
-		</div>
+		<div id=theboard ></div>
+		<div id=theboard2></div>
+		<div id=theboard3></div>
+		<div id=theboard4></div>
+		<div id=theboard5></div>
 
 		<script>
 			var pcs0 =
@@ -72,7 +71,15 @@
 			,[9, 8]
 			,[9, 9]
 			 ]);
-			new ShogiBoard().tosvg(d3.select("#theboard3"), pcs0, pcs1, ps0, ps1, []);
+			new ShogiBoard({
+				width: 500, height: 200
+			}).tosvg(d3.select("#theboard3"), pcs0, pcs1, ps0, ps1, []);
+			new ShogiBoard({
+				width: 200, height: 500
+			}).tosvg(d3.select("#theboard4"), pcs0, pcs1, ps0, ps1, []);
+			new ShogiBoard({
+				width: 400, height: 1000
+			}).tosvg(d3.select("#theboard5"), pcs0, pcs1, ps0, ps1, []);
 		})()</script>
 	</body>
 </html>

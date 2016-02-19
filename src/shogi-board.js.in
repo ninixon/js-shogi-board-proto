@@ -2,7 +2,7 @@
 var ShogiBoard = function(opt) {
 	this.svgWidth = opt && opt.width || 420;
 	this.svgHeight = opt && opt.height || 360;
-	this.boardHeight = this.svgHeight * 0.9;
+	this.boardHeight = Math.min(this.svgHeight * 0.9, this.svgWidth * 0.85);
 	this.boardWidth = this.boardHeight * 0.9;
 	this.cellWidth = this.boardWidth / 9;
 	this.cellHeight = this.boardHeight / 9;
