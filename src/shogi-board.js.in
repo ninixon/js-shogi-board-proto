@@ -244,8 +244,10 @@ var ShogiBoard = function(opt) {
 						sb.boardMarginTop - sb.gaugeFontSize
 				].join() + ")")
 				;
-			g.selectAll("text").data(textlist)
-				.enter().append("text")
+			var sel_text = g.selectAll("text").data(textlist);
+			sel_text.enter().append("text");
+			sel_text.exit().remove();
+			sel_text
 				.text(function(d){return d[0];})
 				// .attr("transform", "matrix(" + [-1, 0, 0, 1, 0, 0].join() + ")")
 				.attr("font-size", function(d) { return d[1]; })
@@ -263,7 +265,10 @@ var ShogiBoard = function(opt) {
 						sb.boardMarginTop + sb.boardHeight + sb.gaugeFontSize
 				].join() + ")")
 				;
-			g.selectAll("text").data(textlist)
+			var sel_text = g.selectAll("text").data(textlist);
+			sel_text.enter().append("text");
+			sel_text.exit().remove();
+			sel_text
 				.enter().append("text")
 				.text(function(d){return d[0];})
 				.attr("font-size", function(d) { return d[1]; })
