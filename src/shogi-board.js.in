@@ -59,8 +59,13 @@ var ShogiBoard = function(opt) {
 	,'九'
 	,'十'
 	];
-	ShogiBoard.prototype.tosvg = function(sel,pcs0,pcs1,ps0,ps1,hllist) {
+	ShogiBoard.prototype.tosvg = function(sel,o) {
 		var sb = this;
+		var pcs0 = o['pcs0'];
+		var pcs1 = o['pcs1'];
+		var ps0 = o['ps0'];
+		var ps1 = o['ps1'];
+		var hllist = o['hllist'];
 		var svg = sel.selectAll("svg")
 		  .data([1])
 		svg.enter().append("svg")
