@@ -84,6 +84,9 @@ var ShogiBoard = function(opt) {
 		  .attr("class", "hilite")
 		  ;
 		sel_hilite
+		  .exit().remove()
+		  ;
+		sel_hilite
 		  .attr("x", function(d) { return Math.min(scX(d[0]), scX(d[0] - 1))})
 		  .attr("y", function(d) { return Math.min(scY(d[1]), scY(d[1] - 1))})
 		  .attr("width", function(d) { return Math.abs(scX(d[0]) - scX(d[0] - 1))})
