@@ -12,6 +12,12 @@
 		<input type=button onclick="sb.tosvg(d3.select('#theboard'), o2);" value="2">
 		<input type=button onclick="sb.tosvg(d3.select('#theboard'), o3);" value="3">
 		<input type=button onclick="sb.tosvg(d3.select('#theboard'), o4);" value="4">
+		<br>
+		<input type=button onclick="sb.tosvg(d3.select('#theboard'), o5);" value="5">
+		<input type=button onclick="sb.tosvg(d3.select('#theboard'), o6);" value="6">
+		<input type=button onclick="sb.tosvg(d3.select('#theboard'), o7);" value="7">
+		<input type=button onclick="sb.tosvg(d3.select('#theboard'), o8);" value="8">
+		<input type=button onclick="sb.tosvg(d3.select('#theboard'), o0);" value="0">
 		<div id=theboard ></div>
 
 		<script>
@@ -37,6 +43,28 @@
 			, ["KI",4,1] , ["KI",6,1]
 			, ["OU",5,1]
 			];
+			var pcs10 =
+			[ ["TO",9,6] , ["TO",8,6] , ["TO",7,6]
+			, ["FU",6,6] , ["FU",5,6] , ["FU",4,6]
+			, ["FU",3,6] , ["FU",2,6] , ["FU",1,6]
+			, ["UM",8,7] , ["HI",2,7]
+			, ["NK",9,8] , ["KY",1,8]
+			, ["NY",8,8] , ["KE",2,8]
+			, ["NG",7,7] , ["GI",3,8]
+			, ["KI",6,8] , ["KI",4,8]
+			, ["OU",5,8]
+			];
+			var pcs11 =
+			[ ["TO",1,4] , ["TO",2,4] , ["TO",3,4]
+			, ["FU",4,4] , ["FU",5,4] , ["FU",6,4]
+			, ["FU",7,4] , ["FU",8,4] , ["FU",9,4]
+			, ["KA",2,3] , ["RY",8,3]
+			, ["NK",1,2] , ["KY",9,2]
+			, ["NY",2,5] , ["KE",8,2]
+			, ["NG",3,2] , ["GI",7,2]
+			, ["KI",4,2] , ["KI",6,2]
+			, ["OU",5,2]
+			];
 			var ps0 =
 			{ "FU": 0
 			, "KY": 0
@@ -58,10 +86,15 @@
 		</script>
 		<script>
 			var sb = new ShogiBoard();
+			var o0 = {pcs0:[], pcs1:[], ps0:{}, ps1:{}, hllist:[]};
 			var o1 = {pcs0:pcs0, pcs1:pcs1, ps0:ps0, ps1:ps0, hllist:[ [7, 6] ]};
 			var o2 = {pcs0:pcs0, pcs1:pcs1, ps0:ps0, ps1:ps1, hllist:[ [8, 6] ]};
 			var o3 = {pcs0:pcs0, pcs1:pcs1, ps0:ps1, ps1:ps0, hllist:[ [9, 6] ]};
 			var o4 = {pcs0:pcs0, pcs1:pcs1, ps0:ps1, ps1:ps1, hllist:[ ]};
+			var o5 = {pcs0:pcs10, pcs1:pcs11, ps0:ps0, ps1:ps0, hllist:[ [7, 5] ]};
+			var o6 = {pcs0:pcs10, pcs1:pcs11, ps0:ps0, ps1:ps1, hllist:[ [8, 5] ]};
+			var o7 = {pcs0:pcs10, pcs1:pcs11, ps0:ps1, ps1:ps0, hllist:[ [9, 5] ]};
+			var o8 = {pcs0:pcs10, pcs1:pcs11, ps0:ps1, ps1:ps1, hllist:[ ]};
 		</script>
 	</body>
 </html>
