@@ -80,7 +80,7 @@ var ShogiBoard = function(opt) {
 		  .data(hllist)
 		  ;
 		sel_hilite
-		  .enter().append("rect")
+		  .enter().insert("rect",":first-child")
 		  .attr("class", "hilite")
 		  ;
 		sel_hilite
