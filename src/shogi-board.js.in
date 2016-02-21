@@ -239,6 +239,11 @@ var ShogiBoard = function(opt) {
 			}
 			return res;
 		};
+		var sel_g_ps0 = svg.selectAll('g.ps0').data([0]);
+		sel_g_ps0.enter().append("g").attr("class","ps0");
+		var sel_g_ps1 = svg.selectAll('g.ps1').data([1]);
+		sel_g_ps1.enter().append("g").attr("class","ps1");
+
 		(function(g){
 			var textlist = ps2textlist('\u2617', ps0);
 			g
@@ -259,7 +264,7 @@ var ShogiBoard = function(opt) {
 				.attr("x", 0)
 				.attr("y", function(d){ return d[2]; })
 			;
-		})(svg.append("g"));
+		})(sel_g_ps0);
 		(function(g){
 			var textlist = ps2textlist('\u2616', ps1);
 			g
@@ -274,13 +279,12 @@ var ShogiBoard = function(opt) {
 			sel_text.enter().append("text");
 			sel_text.exit().remove();
 			sel_text
-				.enter().append("text")
 				.text(function(d){return d[0];})
 				.attr("font-size", function(d) { return d[1]; })
 				.attr("transform", "matrix(" + [-1, 0, 0, 1, 0, 0].join() + ")")
 				.attr("x", 0)
 				.attr("y", function(d){ return d[2]; })
 			;
-		})(svg.append("g"));
+		})(sel_g_ps1);
 	};
 })();
