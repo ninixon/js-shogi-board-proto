@@ -76,11 +76,16 @@ var ShogiBoard = function(opt) {
 		  ;
 		var scX = d3.scale.linear().domain([9, 0]).range([sb.boardMarginLeft, sb.boardWidth + sb.boardMarginLeft]);
 		var scY = d3.scale.linear().domain([0, 9]).range([sb.boardMarginTop, sb.boardHeight + sb.boardMarginTop]);
-		var sel_hilite = svg.selectAll("rect.hilite")
+		var sel_ghilite = svg.selectAll("g.hilite")
+		  .data([1])
+		  ;
+		sel_ghilite.enter().append('g').attr("class","hilite");
+
+		var sel_hilite = sel_ghilite.selectAll("rect.hilite")
 		  .data(hllist)
 		  ;
 		sel_hilite
-		  .enter().insert("rect",":first-child")
+		  .enter().append("rect")
 		  .attr("class", "hilite")
 		  ;
 		sel_hilite
