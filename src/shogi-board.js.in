@@ -12,6 +12,15 @@ var ShogiBoard = function(opt) {
 	this.gaugeFontSize = this.pieceFontSize / 4;
 	this.pieceStandWidth = this.pieceFontSize * 0.9;
 	this.stars = [[3, 3], [3, 6], [6, 3], [6, 6]];
+	this.boardflip = false;
+	this.boarddata =
+	{ "pcs0":[]
+	, "pcs1":[]
+	, "ps0":{}
+	, "ps1":{}
+	, "hllist":[]
+	};
+	this.selection = null;
 };
 (function() {
 	ShogiBoard.prototype.piece_textmap =
@@ -72,14 +81,20 @@ var ShogiBoard = function(opt) {
 
 	ShogiBoard.prototype.data = function(o) {
 		var sb = this;
-		sb.booarddata = o;
+		sb.boarddata = o;
+		return sb;
+	};
+
+	ShogiBoard.prototype.flip = function(b) {
+		var sb = this;
+		sb.boardflip = b;
 		return sb;
 	};
 
 	ShogiBoard.prototype.tosvg = function() {
 		var sb = this;
 		var sel = this.selection;
-		var o = this.booarddata;
+		var o = this.boarddata;
 		var pcs0 = o['pcs0'];
 		var pcs1 = o['pcs1'];
 		var ps0 = o['ps0'];
