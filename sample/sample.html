@@ -8,16 +8,16 @@
 		</style>
 	</head>
 	<body>
-		<input type=button onclick="sb.tosvg(d3.select('#theboard'), o1);" value="1">
-		<input type=button onclick="sb.tosvg(d3.select('#theboard'), o2);" value="2">
-		<input type=button onclick="sb.tosvg(d3.select('#theboard'), o3);" value="3">
-		<input type=button onclick="sb.tosvg(d3.select('#theboard'), o4);" value="4">
+		<input type=button onclick="sb.data(o1).tosvg();" value="1">
+		<input type=button onclick="sb.data(o2).tosvg();" value="2">
+		<input type=button onclick="sb.data(o3).tosvg();" value="3">
+		<input type=button onclick="sb.data(o4).tosvg();" value="4">
 		<br>
-		<input type=button onclick="sb.tosvg(d3.select('#theboard'), o5);" value="5">
-		<input type=button onclick="sb.tosvg(d3.select('#theboard'), o6);" value="6">
-		<input type=button onclick="sb.tosvg(d3.select('#theboard'), o7);" value="7">
-		<input type=button onclick="sb.tosvg(d3.select('#theboard'), o8);" value="8">
-		<input type=button onclick="sb.tosvg(d3.select('#theboard'), o0);" value="0">
+		<input type=button onclick="sb.data(o5).tosvg();" value="5">
+		<input type=button onclick="sb.data(o6).tosvg();" value="6">
+		<input type=button onclick="sb.data(o7).tosvg();" value="7">
+		<input type=button onclick="sb.data(o8).tosvg();" value="8">
+		<input type=button onclick="sb.data(o0).tosvg();" value="0">
 		<div id=theboard ></div>
 
 		<script>
@@ -86,6 +86,7 @@
 		</script>
 		<script>
 			var sb = new ShogiBoard();
+			sb.select('#theboard');
 			var o0 = {pcs0:[], pcs1:[], ps0:{}, ps1:{}, hllist:[]};
 			var o1 = {pcs0:pcs0, pcs1:pcs1, ps0:ps0, ps1:ps0, hllist:[ [7, 6] ]};
 			var o2 = {pcs0:pcs0, pcs1:pcs1, ps0:ps0, ps1:ps1, hllist:[ [8, 6] ]};

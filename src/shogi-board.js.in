@@ -59,8 +59,27 @@ var ShogiBoard = function(opt) {
 	,'九'
 	,'十'
 	];
-	ShogiBoard.prototype.tosvg = function(sel,o) {
+
+	ShogiBoard.prototype.select = function(sel) {
 		var sb = this;
+		if (typeof(sel) == "string") {
+			sb.selection = d3.select(sel);
+		} else {
+			sb.selection = sel;
+		}
+		return sb;
+	};
+
+	ShogiBoard.prototype.data = function(o) {
+		var sb = this;
+		sb.booarddata = o;
+		return sb;
+	};
+
+	ShogiBoard.prototype.tosvg = function() {
+		var sb = this;
+		var sel = this.selection;
+		var o = this.booarddata;
 		var pcs0 = o['pcs0'];
 		var pcs1 = o['pcs1'];
 		var ps0 = o['ps0'];
