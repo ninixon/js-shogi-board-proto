@@ -18,6 +18,19 @@
 		<input type=button onclick="sb.data(o7).tosvg();" value="7">
 		<input type=button onclick="sb.data(o8).tosvg();" value="8">
 		<input type=button onclick="sb.data(o0).tosvg();" value="0">
+		<br>
+		<input type=button
+		style="border: outset 1px;"
+		onclick="
+			if (sb.boardflip) {
+				sb.flip(false);
+				this.style='border: outset 1px;';
+			} else {
+				sb.flip(true);
+				this.style='border: inset 1px;';
+			}
+			sb.tosvg();
+		" value="&#x21b3;&#x21b0;">
 		<div id=theboard ></div>
 
 		<script>
