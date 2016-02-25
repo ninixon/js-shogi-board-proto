@@ -95,10 +95,12 @@ var ShogiBoard = function(opt) {
 		var sb = this;
 		var sel = this.selection;
 		var o = this.boarddata;
-		var pcs0 = o['pcs0'];
-		var pcs1 = o['pcs1'];
-		var ps0 = o['ps0'];
-		var ps1 = o['ps1'];
+		var pcs0 = o[this.boardflip ? 'pcs1' : 'pcs0'];
+		var pcs1 = o[this.boardflip ? 'pcs0' : 'pcs1'];
+		var ps0 = o[this.boardflip ? 'ps1' : 'ps0'];
+		var ps1 = o[this.boardflip ? 'ps0' : 'ps1'];
+		var marker0 = this.boardflip ? '\u2616' : '\u2617';
+		var marker1 = this.boardflip ? '\u2617' : '\u2616';
 		var hllist = o['hllist'];
 		var svg = sel.selectAll("svg")
 		  .data([1])
@@ -110,6 +112,7 @@ var ShogiBoard = function(opt) {
 		  ;
 		var scX = d3.scale.linear().domain([9, 0]).range([sb.boardMarginLeft, sb.boardWidth + sb.boardMarginLeft]);
 		var scY = d3.scale.linear().domain([0, 9]).range([sb.boardMarginTop, sb.boardHeight + sb.boardMarginTop]);
+		var c = function(v) { return sb.boardflip ? 10 - v : v; };
 		var sel_ghilite = svg.selectAll("g.hilite")
 		  .data([1])
 		  ;
@@ -126,10 +129,10 @@ var ShogiBoard = function(opt) {
 		  .exit().remove()
 		  ;
 		sel_hilite
-		  .attr("x", function(d) { return Math.min(scX(d[0]), scX(d[0] - 1))})
-		  .attr("y", function(d) { return Math.min(scY(d[1]), scY(d[1] - 1))})
-		  .attr("width", function(d) { return Math.abs(scX(d[0]) - scX(d[0] - 1))})
-		  .attr("height", function(d) { return Math.abs(scY(d[1]) - scY(d[1] - 1))})
+		  .attr("x", function(d) { return Math.min(scX(c(d[0])), scX(c(d[0]) - 1))})
+		  .attr("y", function(d) { return Math.min(scY(c(d[1])), scY(c(d[1]) - 1))})
+		  .attr("width", function(d) { return Math.abs(scX(c(d[0])) - scX(c(d[0]) - 1))})
+		  .attr("height", function(d) { return Math.abs(scY(c(d[1])) - scY(c(d[1]) - 1))})
 		  .attr("fill", "#CCFFAA")
 		  ;
 		var sel_gridX = svg.selectAll("line.gridX")
@@ -215,8 +218,8 @@ var ShogiBoard = function(opt) {
 			g.selectAll("text").remove();
 
 			var chs = sb.piece_textmap[d[0]].split('');
-			var x = d[1] - 0.5;
-			var y0 = d[2];
+			var x = c(d[1]) - 0.5;
+			var y0 = c(d[2]);
 
 			for (var i = 0; i < chs.length; ++i) {
 				var y = y0 - 1 + (i+0.8) /chs.length
@@ -252,7 +255,7 @@ var ShogiBoard = function(opt) {
 		  .exit().remove()
 		  ;
 		sel_pcs1
-		  .attr("transform", function(d) { return "rotate(" + [180, scX(d[1] - 0.5), scY(d[2] - 0.5)].join(' ') + ")" })
+		  .attr("transform", function(d) { return "rotate(" + [180, scX(c(d[1]) - 0.5), scY(c(d[2]) - 0.5)].join(' ') + ")" })
 		  .each(settext)
 		  ;
 		var ps2textlist = function(playerlabel, ps) {
@@ -293,7 +296,7 @@ var ShogiBoard = function(opt) {
 		sel_g_ps1.enter().append("g").attr("class","ps1");
 
 		(function(g){
-			var textlist = ps2textlist('\u2617', ps0);
+			var textlist = ps2textlist(marker0, ps0);
 			g
 				.attr("text-anchor","middle")
 				// .attr("dominant-baseline","text-after-edge")
@@ -314,7 +317,7 @@ var ShogiBoard = function(opt) {
 			;
 		})(sel_g_ps0);
 		(function(g){
-			var textlist = ps2textlist('\u2616', ps1);
+			var textlist = ps2textlist(marker1, ps1);
 			g
 				.attr("text-anchor","middle")
 				// .attr("dominant-baseline","text-after-edge")
