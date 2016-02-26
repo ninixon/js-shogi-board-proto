@@ -281,7 +281,9 @@ var ShogiBoard = function(opt) {
 				,["し", sb.pieceFontSize * 0.6]
 				];
 			}
-			res.unshift([playerlabel, sb.pieceFontSize]);
+			if (playerlabel) {
+				res.unshift([playerlabel, sb.pieceFontSize]);
+			}
 			var y = 0;
 			for (var i = 0; i < res.length; ++i) {
 				var h = res[i][1];
