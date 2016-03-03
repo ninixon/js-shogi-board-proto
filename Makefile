@@ -5,3 +5,9 @@ dist/shogi-board.js: med/shogi-board.js util/jsmbu/mbu.pl
 med/shogi-board.js: src/shogi-board.js src/shogi-board-impl.js
 	mkdir -p med
 	$(CPP) -Isrc < $< > $@
+
+.PHONY: clean
+
+clean:
+	rm -rf med
+	rm -rf dist
