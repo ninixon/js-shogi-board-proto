@@ -1,29 +1,31 @@
 // vi: set ft=javascript :
-var ShogiBoard = function(opt) {
-	this.svgWidth = opt && opt.width || 420;
-	this.svgHeight = opt && opt.height || 360;
-	this.boardHeight = Math.min(this.svgHeight * 0.9, this.svgWidth * 0.85);
-	this.boardWidth = this.boardHeight * 0.9;
-	this.cellWidth = this.boardWidth / 9;
-	this.cellHeight = this.boardHeight / 9;
-	this.boardMarginLeft = (this.svgWidth - this.boardWidth) * 0.5;
-	this.boardMarginTop = (this.svgHeight - this.boardHeight) * 0.5;
-	this.pieceFontSize = Math.min(this.boardWidth, this.boardHeight) / 10;
-	this.gaugeFontSize = this.pieceFontSize / 4;
-	this.pieceStandWidth = this.pieceFontSize * 0.9;
-	this.classPrefix = opt && opt.classPrefix || 'shogi-board';
-	this.stars = [[3, 3], [3, 6], [6, 3], [6, 6]];
-	this.boardflip = false;
-	this.boarddata =
-	{ "pcs0":[]
-	, "pcs1":[]
-	, "ps0":{}
-	, "ps1":{}
-	, "hllist":[]
+(function(def) {
+	ShogiBoard = def();
+})(function () {
+	var ShogiBoard = function(opt) {
+		this.svgWidth = opt && opt.width || 420;
+		this.svgHeight = opt && opt.height || 360;
+		this.boardHeight = Math.min(this.svgHeight * 0.9, this.svgWidth * 0.85);
+		this.boardWidth = this.boardHeight * 0.9;
+		this.cellWidth = this.boardWidth / 9;
+		this.cellHeight = this.boardHeight / 9;
+		this.boardMarginLeft = (this.svgWidth - this.boardWidth) * 0.5;
+		this.boardMarginTop = (this.svgHeight - this.boardHeight) * 0.5;
+		this.pieceFontSize = Math.min(this.boardWidth, this.boardHeight) / 10;
+		this.gaugeFontSize = this.pieceFontSize / 4;
+		this.pieceStandWidth = this.pieceFontSize * 0.9;
+		this.classPrefix = opt && opt.classPrefix || 'shogi-board';
+		this.stars = [[3, 3], [3, 6], [6, 3], [6, 6]];
+		this.boardflip = false;
+		this.boarddata =
+		{ "pcs0":[]
+		, "pcs1":[]
+		, "ps0":{}
+		, "ps1":{}
+		, "hllist":[]
+		};
+		this.selection = null;
 	};
-	this.selection = null;
-};
-(function() {
 	ShogiBoard.prototype.piece_textmap =
 	{"FU":"歩"
 	,"GI":"銀"
@@ -342,4 +344,6 @@ var ShogiBoard = function(opt) {
 			;
 		})(sel_g_ps1);
 	};
-})();
+
+	return ShogiBoard;
+});
