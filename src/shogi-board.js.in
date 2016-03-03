@@ -70,9 +70,6 @@ var ShogiBoard = function(opt) {
 	,'十'
 	];
 
-	ShogiBoard.prototype.gen_initdata = function() {
-	};
-
 	ShogiBoard.prototype.select = function(sel) {
 		var sb = this;
 		if (typeof(sel) == "string") {
