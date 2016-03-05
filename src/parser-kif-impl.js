@@ -185,5 +185,20 @@ function () {
 		}
 	};
 
+	var fold_parsed = function(src,seed,op) {
+		var lines = src.split(/\r\n|\r|\n/);
+		for (var i = 0; i < lines.length; ++i) {
+			var line = lines[i];
+			var matchres = parse_line(line);
+			if (matchres) {
+				seed = op(seed, line);
+			}
+		}
+		return seed;
+	};
+
 	kifparse.parse_line = parse_line;
+	kifparse.parse_lines = parse_lines;
+
+	return kifparse;
 }
