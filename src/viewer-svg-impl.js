@@ -1,5 +1,5 @@
 function () {
-	var ShogiBoard = function(opt) {
+	var svgview = function(opt) {
 		this.svgWidth = opt && opt.width || 420;
 		this.svgHeight = opt && opt.height || 360;
 		this.boardHeight = Math.min(this.svgHeight * 0.9, this.svgWidth * 0.85);
@@ -23,7 +23,7 @@ function () {
 		};
 		this.selection = null;
 	};
-	ShogiBoard.prototype.piece_textmap =
+	svgview.prototype.piece_textmap =
 	{"FU":"歩"
 	,"GI":"銀"
 	,"HI":"飛"
@@ -39,7 +39,7 @@ function () {
 	,"TO":"と"
 	,"UM":"馬"
 	};
-	ShogiBoard.prototype.piece_colormap =
+	svgview.prototype.piece_colormap =
 	{"FU":"black"
 	,"GI":"black"
 	,"HI":"black"
@@ -55,7 +55,7 @@ function () {
 	,"TO":"red"
 	,"UM":"red"
 	};
-	ShogiBoard.prototype.nummap =
+	svgview.prototype.nummap =
 	[null
 	,'一'
 	,'二'
@@ -69,7 +69,7 @@ function () {
 	,'十'
 	];
 
-	ShogiBoard.prototype.select = function(sel) {
+	svgview.prototype.select = function(sel) {
 		var sb = this;
 		if (typeof(sel) == "string") {
 			sb.selection = d3.select(sel);
@@ -79,19 +79,19 @@ function () {
 		return sb;
 	};
 
-	ShogiBoard.prototype.data = function(o) {
+	svgview.prototype.data = function(o) {
 		var sb = this;
 		sb.boarddata = o;
 		return sb;
 	};
 
-	ShogiBoard.prototype.flip = function(b) {
+	svgview.prototype.flip = function(b) {
 		var sb = this;
 		sb.boardflip = b;
 		return sb;
 	};
 
-	ShogiBoard.prototype.tosvg = function() {
+	svgview.prototype.tosvg = function() {
 		var sb = this;
 		var sel = this.selection;
 		var o = this.boarddata;
@@ -342,5 +342,5 @@ function () {
 		})(sel_g_ps1);
 	};
 
-	return ShogiBoard;
+	return svgview;
 }
