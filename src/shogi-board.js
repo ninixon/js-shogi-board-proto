@@ -2,5 +2,5 @@
 (function(def) {
 	ShogiBoard = def();
 })(
-#include "shogi-board-impl.js"
+#include "viewer-svg-impl.js"
 );
