@@ -4,6 +4,7 @@ function () {
 		this["pcs1"] = [];
 		this["ps0"] = {};
 		this["ps1"] = {};
+		this["history"] = [];
 	};
 
 	var is_array = function(a) {
@@ -45,7 +46,11 @@ function () {
 		r["pcs1"] = array_deepcopy(b["pcs1"]);
 		r["ps0"] = histogram_copy(b["ps0"]);
 		r["ps1"] = histogram_copy(b["ps1"]);
-		// TODO: hllist
+		var hllist = r["hllist"] = [];
+		var lasthand = b.history.length() > 0 && b.history[b.history.length() - 1];
+		if (lasthand) {
+			hllist.push([ lasthand[0], lasthand[1] ]);
+		}
 		return r;
 	};
 
