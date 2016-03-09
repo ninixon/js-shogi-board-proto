@@ -96,5 +96,13 @@ function () {
 		return r;
 	};
 
+	board.prototype.move = function(hand) {
+		var b = this;
+
+		// TODO: impl
+
+		b["history"].push(hand);
+	};
+
 	return board;
 }
