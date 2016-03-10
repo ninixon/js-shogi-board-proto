@@ -10,6 +10,44 @@ function () {
 	, "HI"
 	];
 
+	var promotion =
+	[["FU", "TO"]
+	,["KY", "NY"]
+	,["KE", "NK"]
+	,["GI", "NG"]
+	,["KA", "UM"]
+	,["HI", "RY"]
+	];
+
+	var alist2map = function(alist) {
+		var res = {};
+		for (var i = 0; i < alist.length; ++i) {
+			var k = alist[i][0];
+			var v = alist[i][1];
+			res[k] = v;
+		}
+		return res;
+	};
+	var alist2rmap = function(alist) {
+		var res = {};
+		for (var i = 0; i < alist.length; ++i) {
+			var k = alist[i][0];
+			var v = alist[i][1];
+			res[v] = k;
+		}
+		return res;
+	};
+	var map = function(cb, list) {
+		var res = [];
+		for (var i = 0; i < list.length; ++i) {
+			res[i] = cb(list[i]);
+		}
+		return res;
+	};
+
+	var promotion_map = alist2map(promotion);
+	var promotion_rmap = alist2rmap(promotion);
+
 	var is_array = function(a) {
 		return Object.prototype.toString.call(a) === '[object Array]';
 	};
