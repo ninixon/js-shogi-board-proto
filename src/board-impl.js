@@ -137,7 +137,15 @@ function () {
 	board.prototype.move = function(hand) {
 		var b = this;
 
-		// TODO: impl
+		if (hand["TYPE"] == "MOVE") {
+			var mvsrc = hand["MVSRC"];
+			var mvdst = hand["MVDST"];
+			var promote = hand["PROMOTE"];
+			// TODO: impl
+		} else {
+			// do nothing
+			return;
+		}
 
 		b["history"].push(hand);
 	};
