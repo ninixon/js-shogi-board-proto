@@ -1,6 +1,7 @@
 function () {
 	var kifparse = {};
 
+	// TODO: remove duplicated defs
 	var alist2map = function(alist) {
 		var res = {};
 		for (var i = 0; i < alist.length; ++i) {
