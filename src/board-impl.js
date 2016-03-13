@@ -48,6 +48,19 @@ function () {
 	var promotion_map = alist2map(promotion);
 	var promotion_rmap = alist2rmap(promotion);
 
+	var find_from_pcs = function(pcs, x, y, remove) {
+		for (var i = 0; i < pcs.length(); ++i) {
+			var pc = pcs[i];
+			if (pc[1] == x && pc[2] == y) {
+				if (remove) {
+					pcs.splice(i, 1);
+				}
+				return pc;
+			}
+		}
+		return false;
+	};
+
 	var is_array = function(a) {
 		return Object.prototype.toString.call(a) === '[object Array]';
 	};
