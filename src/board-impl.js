@@ -154,7 +154,15 @@ function () {
 			var mvsrc = hand["MVSRC"];
 			var mvdst = hand["MVDST"];
 			var promote = hand["PROMOTE"];
-			// TODO: impl
+			var move_sub = function(pcs0, pcs1, ps0, ps1) {
+				// TODO: impl
+				return false;
+			};
+			if (move_sub(b["pcs0"],b["pcs1"],b["ps0"],b["ps1"])) {
+				// TODO: impl
+			} else if (move_sub(b["pcs1"],b["pcs0"],b["ps1"],b["ps0"])) {
+				// TODO: impl
+			}
 		} else {
 			// do nothing
 			return;
