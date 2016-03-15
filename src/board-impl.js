@@ -162,6 +162,8 @@ function () {
 				// TODO: impl
 			} else if (move_sub(b["pcs1"],b["pcs0"],b["ps1"],b["ps0"])) {
 				// TODO: impl
+			} else {
+				// TODO: just ignore?
 			}
 		} else {
 			// do nothing
