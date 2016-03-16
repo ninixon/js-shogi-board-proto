@@ -137,6 +137,7 @@ function () {
 						"TYPE" : "MOVE"
 					,	"PIECE" : "TORYO"
 					,	"SERIAL" : Number(matchres[1])
+					,	"PLAYER" : (Number(matchres[1]) - 1 % 2)
 					,	"SPENT" : t2sec(matchres[11])
 					,	"SPTOTAL" : t2sec(matchres[12])
 					};
@@ -145,6 +146,7 @@ function () {
 			return {
 				"TYPE" : "MOVE"
 			,	"SERIAL" : Number(matchres[1])
+			,	"PLAYER" : (Number(matchres[1]) - 1 % 2)
 			,	"PIECE" : piece_map[matchres[5]]
 			,	"MVSRC" : mvsrc
 			,	"MVDST" : mvdst

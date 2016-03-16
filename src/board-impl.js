@@ -48,17 +48,14 @@ function () {
 	var promotion_map = alist2map(promotion);
 	var promotion_rmap = alist2rmap(promotion);
 
-	var find_from_pcs = function(pcs, x, y, remove) {
+	var find_from_pcs = function(pcs, x, y) {
 		for (var i = 0; i < pcs.length(); ++i) {
 			var pc = pcs[i];
 			if (pc[1] == x && pc[2] == y) {
-				if (remove) {
-					pcs.splice(i, 1);
-				}
-				return pc;
+				return i;
 			}
 		}
-		return false;
+		return null;
 	};
 
 	var is_array = function(a) {
@@ -151,16 +148,30 @@ function () {
 		var b = this;
 
 		if (hand["TYPE"] == "MOVE") {
+			// TODO: player
+			var player = hand["PLAYER"];
+			var piece = hand["PIECE"];
 			var mvsrc = hand["MVSRC"];
 			var mvdst = hand["MVDST"];
 			var promote = hand["PROMOTE"];
 			var move_sub = function(pcs0, pcs1, ps0, ps1) {
-				// TODO: impl
-				return false;
+				var srcx = mvsrc["x"];
+				var srcy = mvsrc["y"];
+				var dstx = mvdst["x"];
+				var dsty = mvdst["y"];
+				if (srcx == 0 && srcy == 0) {
+					// TODO: impl
+				} else {
+					var srci = find_from_pcs(pcs0, srcx, srcy);
+					if (srci === null) {
+						return false;
+					}
+					// TODO: impl
+				}
 			};
-			if (move_sub(b["pcs0"],b["pcs1"],b["ps0"],b["ps1"])) {
+			if (player == 0 && move_sub(b["pcs0"],b["pcs1"],b["ps0"],b["ps1"])) {
 				// TODO: impl
-			} else if (move_sub(b["pcs1"],b["pcs0"],b["ps1"],b["ps0"])) {
+			} else if (player == 1 && move_sub(b["pcs1"],b["pcs0"],b["ps1"],b["ps0"])) {
 				// TODO: impl
 			} else {
 				// TODO: just ignore?
