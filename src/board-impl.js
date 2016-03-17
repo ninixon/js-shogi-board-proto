@@ -160,7 +160,8 @@ function () {
 				var dstx = mvdst["x"];
 				var dsty = mvdst["y"];
 				if (srcx == 0 && srcy == 0) {
-					// TODO: impl
+					--ps0[piece];
+					pcs0.push([piece, dstx, dsty]);
 				} else {
 					var srci = find_from_pcs(pcs0, srcx, srcy);
 					if (srci === null) {
