@@ -167,8 +167,30 @@ function () {
 					if (srci === null) {
 						return false;
 					}
-					// TODO: impl
+					pcs0[srci] =
+					[ promote ? promotion_map[piece] : piece
+					, dstx
+					, dsty
+					];
+
+					var dsti = find_from_pcs(pcs1, dstx, dsty);
+					if (dsti === null) {
+						// moving to empty space
+					} else {
+						var tohand = pcs1.splice(dsti, 1);
+						var piece_tohand = tohand[0][0];
+						piece_tohand
+						=  promotion_rmap[piece_tohand]
+						||                piece_tohand
+						;
+						if (piece_tohand in ps0) {
+							++ps0[piece_tohand];
+						} else {
+							ps0[piece_tohand] = 1;
+						}
+					}
 				}
+				return true;
 			};
 			if (player == 0 && move_sub(b["pcs0"],b["pcs1"],b["ps0"],b["ps1"])) {
 				// TODO: impl
