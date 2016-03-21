@@ -144,6 +144,10 @@ function () {
 		return r;
 	};
 
+	var opponent = function(player) {
+		return 1 - player;
+	};
+
 	board.prototype.move = function(hand) {
 		var b = this;
 
