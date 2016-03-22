@@ -8,28 +8,28 @@
 		</style>
 	</head>
 	<body>
-		<input type=button onclick="sb.data(o1).tosvg();" value="1">
-		<input type=button onclick="sb.data(o2).tosvg();" value="2">
-		<input type=button onclick="sb.data(o3).tosvg();" value="3">
-		<input type=button onclick="sb.data(o4).tosvg();" value="4">
+		<input type=button onclick="view.data(o1).tosvg();" value="1">
+		<input type=button onclick="view.data(o2).tosvg();" value="2">
+		<input type=button onclick="view.data(o3).tosvg();" value="3">
+		<input type=button onclick="view.data(o4).tosvg();" value="4">
 		<br>
-		<input type=button onclick="sb.data(o5).tosvg();" value="5">
-		<input type=button onclick="sb.data(o6).tosvg();" value="6">
-		<input type=button onclick="sb.data(o7).tosvg();" value="7">
-		<input type=button onclick="sb.data(o8).tosvg();" value="8">
-		<input type=button onclick="sb.data(o0).tosvg();" value="0">
+		<input type=button onclick="view.data(o5).tosvg();" value="5">
+		<input type=button onclick="view.data(o6).tosvg();" value="6">
+		<input type=button onclick="view.data(o7).tosvg();" value="7">
+		<input type=button onclick="view.data(o8).tosvg();" value="8">
+		<input type=button onclick="view.data(o0).tosvg();" value="0">
 		<br>
 		<input type=button
 		style="border: outset 1px;"
 		onclick="
-			if (sb.boardflip) {
-				sb.flip(false);
+			if (view.boardflip) {
+				view.flip(false);
 				this.style='border: outset 1px;';
 			} else {
-				sb.flip(true);
+				view.flip(true);
 				this.style='border: inset 1px;';
 			}
-			sb.tosvg();
+			view.tosvg();
 		" value="&#x21b3;&#x21b0;">
 		<div id=theboard ></div>
 
@@ -98,9 +98,9 @@
 			};
 		</script>
 		<script>
-			var sb = new ShogiBoard();
-			sb.select('#theboard');
-			sb.tosvg();
+			var view = new ShogiBoard.SVGView;
+			view.select('#theboard');
+			view.tosvg();
 			var o0 = {pcs0:[], pcs1:[], ps0:{}, ps1:{}, hllist:[]};
 			var o1 = {pcs0:pcs0, pcs1:pcs1, ps0:ps0, ps1:ps0, hllist:[ [7, 6] ]};
 			var o2 = {pcs0:pcs0, pcs1:pcs1, ps0:ps0, ps1:ps1, hllist:[ [8, 6] ]};
