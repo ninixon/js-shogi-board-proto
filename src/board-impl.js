@@ -72,7 +72,7 @@ function () {
 	};
 
 	var histogram_copy = function(a) {
-		var b = {];
+		var b = {};
 		for (var i = 0; i < pskeys.length(); ++i) {
 			var k = pskeys[i];
 			b[k] = a[k] || 0;

@@ -3,12 +3,12 @@ dist/shogi-board.js: med/shogi-board.js util/jsmbu/mbu.pl
 	mkdir -p dist
 	perl util/jsmbu/mbu.pl < $< > $@
 IMPLJS= \
-src/shogi-board.js \
 src/viewer-svg-impl.js \
 src/parser-kif-impl.js \
+src/board-impl.js \
 src/control-impl.js \
 
-med/shogi-board.js: $(IMPLJS)
+med/shogi-board.js: src/shogi-board.js $(IMPLJS)
 	mkdir -p med
 	$(CPP) -Isrc < $< > $@
 
