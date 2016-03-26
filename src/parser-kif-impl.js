@@ -201,7 +201,7 @@ function () {
 	};
 
 	kifparse.parse_line = parse_line;
-	kifparse.parse_lines = parse_lines;
+	kifparse.fold_parsed = fold_parsed;
 
 	return kifparse;
 }
