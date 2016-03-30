@@ -10,5 +10,7 @@ function () {
 #		include "parser-kif-impl.js"
 	);
 	control['SVGView'] = SVGView;
+	control['Parser'] = Parser;
+	control['BoardModel'] = BoardModel;
 	return control;
 }
