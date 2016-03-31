@@ -9,6 +9,9 @@ function () {
 	var Parser = (function(def) { return def(); })(
 #		include "parser-kif-impl.js"
 	);
+	var cps932decoder = (function(def) { return def(); })(
+#		include "cesdecodecp932-impl.js"
+	);
 	control['SVGView'] = SVGView;
 	control['Parser'] = Parser;
 	control['BoardModel'] = BoardModel;
