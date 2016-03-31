@@ -90,6 +90,7 @@ function () {
 		b["ps0"] = histogram_empty();
 		b["ps1"] = histogram_empty();
 		b["history"] = [];
+		b["note"] = [ ];
 		return b;
 	};
 
@@ -119,6 +120,7 @@ function () {
 		b["ps0"] = histogram_empty();
 		b["ps1"] = histogram_empty();
 		b["history"] = [];
+		b["note"] = [ ];
 		return b;
 	};
 
