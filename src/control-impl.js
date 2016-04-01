@@ -9,7 +9,7 @@ function () {
 	var Parser = (function(def) { return def(); })(
 #		include "parser-kif-impl.js"
 	);
-	var cps932decoder = (function(def) { return def(); })(
+	var cesdecode = (function(def) { return def(); })(
 #		include "cesdecodecp932-impl.js"
 	);
 	control['SVGView'] = SVGView;
@@ -25,7 +25,24 @@ function () {
 	};
 
 	var FromKifHTTP = function(target, uri) {
-		// TODO: XHR
+		// TODO: init
+		var req = new XMLHttpRequest();
+		req.onreadystatechange = function () {
+			if (	req.readyState == 4 &&
+					req.status == 200
+			   ) {
+				var response_data = new Uint8Array(req.response);
+				var text = cesdecode.fromcp932(response_data);
+				var lines = text.split(/\r\n|\r|\n/);
+				for (var i = 0; i < lines.length; ++i) {
+					// TODO: impl
+				}
+			}
+		};
+		req.open('GET', uri);
+		req.responseType = 'arraybuffer';
+		req.send();
+
 	};
 
 	control['FromKifHTTP'] = FromKifHTTP;
