@@ -19,7 +19,8 @@ function () {
 	var FromKifSource = function(target, text) {
 		var lines = text.split(/\r\n|\r|\n/);
 		for (var i = 0; i < lines.length; ++i) {
-			// TODO: impl
+			var matchres = Parser.parse_line(line);
+			// TODO: dispatch
 		}
 	};
 
@@ -29,7 +30,6 @@ function () {
 	};
 
 	var FromKifHTTP = function(target, uri) {
-		// TODO: init
 		var req = new XMLHttpRequest();
 		req.onreadystatechange = function () {
 			if (	req.readyState == 4 &&
