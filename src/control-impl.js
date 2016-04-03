@@ -16,12 +16,16 @@ function () {
 	control['Parser'] = Parser;
 	control['BoardModel'] = BoardModel;
 
-	var FromKifSource = function(target, txt) {
-		// TODO: impl
+	var FromKifSource = function(target, text) {
+		var lines = text.split(/\r\n|\r|\n/);
+		for (var i = 0; i < lines.length; ++i) {
+			// TODO: impl
+		}
 	};
 
 	var FromKifBinary = function(target, bin) {
-		// TODO: impl
+		var text = cesdecode.fromcp932(response_data);
+		return FromKifSource(target, text);
 	};
 
 	var FromKifHTTP = function(target, uri) {
@@ -32,11 +36,7 @@ function () {
 					req.status == 200
 			   ) {
 				var response_data = new Uint8Array(req.response);
-				var text = cesdecode.fromcp932(response_data);
-				var lines = text.split(/\r\n|\r|\n/);
-				for (var i = 0; i < lines.length; ++i) {
-					// TODO: impl
-				}
+				FromKifBinary(target, response_data);
 			}
 		};
 		req.open('GET', uri);
