@@ -19,19 +19,20 @@ function () {
 	var FromKifSource = function(target, text) {
 		var lines = text.split(/\r\n|\r|\n/);
 		for (var i = 0; i < lines.length; ++i) {
+			var line = lines[i];
 			var matchres = Parser.parse_line(line);
 			// TODO: dispatch
 		}
 	};
 
 	var FromKifBinary = function(target, bin) {
-		var text = cesdecode.fromcp932(response_data);
+		var text = cesdecode.fromcp932(bin);
 		return FromKifSource(target, text);
 	};
 
 	var FromKifFile = function(target, fileobj) {
 		var filereader = new FileReader();
-		var filecontent = filereader.readAsArrayBuffer(fileobj);
+		var filecontent = new Uint8Array(filereader.readAsArrayBuffer(fileobj));
 		return FromKifBinary(target, filecontent);
 	};
 
@@ -51,6 +52,7 @@ function () {
 
 	};
 
+	control['FromKifFile'] = FromKifFile;
 	control['FromKifHTTP'] = FromKifHTTP;
 
 	return control;
