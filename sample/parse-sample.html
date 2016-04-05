@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="../dist/shogi-board.js" charset="utf-8"></script>
+		<style>
+		</style>
+	</head>
+	<body>
+		<div id=theboard></div>
+		<input type=file id=file_theboard>
+		<script>
+			var theboard = document.getElementById("theboard");
+			var file_theboard = document.getElementById("file_theboard");
+			var file_onchange = function(ev) {
+				var evtarget = ev.target;
+				var file = evtarget.files[0];
+				ShogiBoard.FromKifFile(theboard, file);
+			};
+		</script>
+	</body>
+</html>

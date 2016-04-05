@@ -29,6 +29,12 @@ function () {
 		return FromKifSource(target, text);
 	};
 
+	var FromKifFile = function(target, fileobj) {
+		var filereader = new FileReader();
+		var filecontent = filereader.readAsArrayBuffer(fileobj);
+		return FromKifBinary(target, filecontent);
+	};
+
 	var FromKifHTTP = function(target, uri) {
 		var req = new XMLHttpRequest();
 		req.onreadystatechange = function () {
