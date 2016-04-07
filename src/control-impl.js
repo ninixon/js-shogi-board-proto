@@ -16,7 +16,13 @@ function () {
 	control['Parser'] = Parser;
 	control['BoardModel'] = BoardModel;
 
-	var FromKifSource = function(target, text) {
+	var Board = function(target) {
+		this['ui-target'] = target;
+	};
+	control['Board'] = Board;
+
+	Board.prototype.FromKifSource = function(text) {
+		var b = this;
 		var lines = text.split(/\r\n|\r|\n/);
 		for (var i = 0; i < lines.length; ++i) {
 			var line = lines[i];
@@ -25,25 +31,28 @@ function () {
 		}
 	};
 
-	var FromKifBinary = function(target, bin) {
+	Board.prototype.FromKifBinary = function(bin) {
+		var b = this;
 		var text = cesdecode.fromcp932(bin);
-		return FromKifSource(target, text);
+		return b.FromKifSource(text);
 	};
 
-	var FromKifFile = function(target, fileobj) {
+	Board.prototype.FromKifFile = function(fileobj) {
+		var b = this;
 		var filereader = new FileReader();
 		var filecontent = new Uint8Array(filereader.readAsArrayBuffer(fileobj));
-		return FromKifBinary(target, filecontent);
+		return b.FromKifBinary(filecontent);
 	};
 
-	var FromKifHTTP = function(target, uri) {
+	Board.prototype.FromKifHTTP = function(uri) {
+		var b = this;
 		var req = new XMLHttpRequest();
 		req.onreadystatechange = function () {
 			if (	req.readyState == 4 &&
 					req.status == 200
 			   ) {
 				var response_data = new Uint8Array(req.response);
-				FromKifBinary(target, response_data);
+				b.FromKifBinary(response_data);
 			}
 		};
 		req.open('GET', uri);
@@ -51,9 +60,6 @@ function () {
 		req.send();
 
 	};
-
-	control['FromKifFile'] = FromKifFile;
-	control['FromKifHTTP'] = FromKifHTTP;
 
 	return control;
 }

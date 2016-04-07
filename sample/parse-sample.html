@@ -8,15 +8,15 @@
 		</style>
 	</head>
 	<body>
-		<div id=theboard></div>
 		<input type=file id=file_theboard>
+		<div id=theboard></div>
 		<script>
 			var theboard = document.getElementById("theboard");
 			var file_theboard = document.getElementById("file_theboard");
 			var file_onchange = function(ev) {
 				var evtarget = ev.target;
 				var file = evtarget.files[0];
-				ShogiBoard.FromKifFile(theboard, file);
+				new ShogiBoard.Board(theboard).FromKifFile(file);
 			};
 			file_theboard.addEventListener('change', file_onchange);
 		</script>
