@@ -21,7 +21,7 @@ function () {
 	};
 	control['Board'] = Board;
 
-	Board.prototype.FromKifSource = function(text) {
+	Board.prototype.LoadKifSource = function(text) {
 		var b = this;
 		var lines = text.split(/\r\n|\r|\n/);
 		for (var i = 0; i < lines.length; ++i) {
@@ -31,20 +31,20 @@ function () {
 		}
 	};
 
-	Board.prototype.FromKifBinary = function(bin) {
+	Board.prototype.LoadKifBinary = function(bin) {
 		var b = this;
 		var text = cesdecode.fromcp932(bin);
-		return b.FromKifSource(text);
+		return b.LoadKifSource(text);
 	};
 
-	Board.prototype.FromKifFile = function(fileobj) {
+	Board.prototype.LoadKifFile = function(fileobj) {
 		var b = this;
 		var filereader = new FileReader();
 		var filecontent = new Uint8Array(filereader.readAsArrayBuffer(fileobj));
-		return b.FromKifBinary(filecontent);
+		return b.LoadKifBinary(filecontent);
 	};
 
-	Board.prototype.FromKifHTTP = function(uri) {
+	Board.prototype.LoadKifHTTP = function(uri) {
 		var b = this;
 		var req = new XMLHttpRequest();
 		req.onreadystatechange = function () {
@@ -52,7 +52,7 @@ function () {
 					req.status == 200
 			   ) {
 				var response_data = new Uint8Array(req.response);
-				b.FromKifBinary(response_data);
+				b.LoadKifBinary(response_data);
 			}
 		};
 		req.open('GET', uri);

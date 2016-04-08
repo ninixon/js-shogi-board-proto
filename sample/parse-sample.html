@@ -16,7 +16,7 @@
 			var file_onchange = function(ev) {
 				var evtarget = ev.target;
 				var file = evtarget.files[0];
-				new ShogiBoard.Board(theboard).FromKifFile(file);
+				new ShogiBoard.Board(theboard).LoadKifFile(file);
 			};
 			file_theboard.addEventListener('change', file_onchange);
 		</script>
